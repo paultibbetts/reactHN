@@ -1,0 +1,27 @@
+{
+  "name": "react-hn",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "anchorme": "^1.1.2",
+    "dompurify": "^1.0.3",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-redux": "^5.0.6",
+    "react-router-dom": "^4.2.2",
+    "react-scripts": "1.1.0",
+    "redux": "^3.7.2",
+    "redux-thunk": "^2.2.0",
+    "serve": "^6.4.9"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "now-start": "serve --single ./build",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "devDependencies": {
+    "redux-devtools": "^3.4.1"
+  }
+}
