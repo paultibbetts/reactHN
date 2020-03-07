@@ -12,12 +12,12 @@ class Collection extends Component {
     this.getData(this.props.type);
     scrollToTop();
   }
-  
-  componentWillReceiveProps(nextProps) {
+
+  componentDidUpdate(nextProps) {
     const typeChanged = this.props.type !== nextProps.type;
     const pageChanged = this.props.match.params.page !== nextProps.match.params.page
-    if ( typeChanged || pageChanged ) {
-      this.getData(nextProps.type, nextProps.match.params.page);
+    if (typeChanged || pageChanged) {
+      this.getData(this.props.type, this.props.match.params.page || null);
     }
   }
 

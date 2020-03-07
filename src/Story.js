@@ -8,12 +8,9 @@ import { scrollToTop, renderLoading } from './helpers';
 
 class Story extends Component {
 
-  componentWillMount() {
+  componentDidMount() {
     const { id } = this.props.match.params;
     this.props.dispatch(getSingle('item', id));
-  }
-
-  componentDidMount() {
     scrollToTop();
   }
   
