@@ -32,3 +32,11 @@ export const renderLoading = () => {
     </div>
   );
 }
+
+export const setTitle = (title) => {
+  document.title = `${title ? ucFirst(title) + ' - ' : '' } React HN`;
+}
+
+export const ucFirst = (string) => {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}

@@ -4,12 +4,13 @@ import { Redirect } from 'react-router-dom';
 import { getCollection } from './actions';
 import Item from './components/Item';
 import Pagination from './components/Pagination';
-import { scrollToTop, renderLoading } from './helpers';
+import { scrollToTop, renderLoading, setTitle } from './helpers';
 
 class Collection extends Component {
 
   componentDidMount() {
     this.getData(this.props.type);
+    setTitle(this.props.type === 'news' ? 'Top' : this.props.type)
     scrollToTop();
   }
 
@@ -17,6 +18,7 @@ class Collection extends Component {
     const typeChanged = this.props.type !== nextProps.type;
     const pageChanged = this.props.match.params.page !== nextProps.match.params.page
     if (typeChanged || pageChanged) {
+      setTitle(this.props.type)
       this.getData(this.props.type, this.props.match.params.page || null);
     }
   }
