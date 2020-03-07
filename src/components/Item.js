@@ -1,26 +1,12 @@
 import React, { Component, Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import discussion from './discussion';
+import { getLinkUrl, getPath } from '../helpers';
 
 class Item extends Component {
-
-  isValidUrl(string) {
-    try {
-      new URL(string);
-      return true;
-    } catch (e) {
-      return false;
-    }
-  }
-  
-  getPath = (data) => `/item/${data.id}`;
-  
-  getLinkUrl = (data) => this.isValidUrl(data.url) ? 
-    data.url : 
-    this.getPath(data)
   
   renderLink = (data) => (
-    <a href={this.getLinkUrl(data)} className="item__link break-words">
+    <a href={getLinkUrl(data)} className="item__link break-words">
       {data.title}
       &nbsp;
       {data.domain &&
@@ -47,13 +33,13 @@ class Item extends Component {
                 by <Link to={`/user/${data.user}`}>{data.user}</Link>&nbsp;
               </span>
             )}
-            <Link to={this.getPath(data)}>
+            <Link to={getPath(data)}>
               {data.time_ago}
             </Link>
             {discussion(data) && 
               <Fragment>
                 &nbsp;|&nbsp;
-                <Link to={this.getPath(data)}>
+                <Link to={getPath(data)}>
                   {discussion(data)}
                 </Link>
               </Fragment>
