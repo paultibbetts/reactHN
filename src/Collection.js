@@ -13,7 +13,7 @@ class Collection extends Component {
     scrollToTop();
   }
   
-  componentWillReceiveProps(nextProps) {
+  componentDidUpdate(nextProps) {
     const typeChanged = this.props.type !== nextProps.type;
     const pageChanged = this.props.match.params.page !== nextProps.match.params.page
     if ( typeChanged || pageChanged ) {
