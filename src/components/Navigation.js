@@ -1,5 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import { scrollToTop } from '../helpers';
 
 // Top news has a slightly different URL structure
 const isTopNews = (match, location) => {
@@ -31,7 +32,10 @@ const className = "navigation__link";
 const activeClassName = `${className}--active`;
 
 const Navigation = () => (
-  <nav className="navigation">
+  <nav
+    className="navigation"
+    onClick={() => scrollToTop()}
+  >
     <div className="container">
       <ul className="navigation__list">
         <li className="navigation__listItem">
