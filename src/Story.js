@@ -2,9 +2,9 @@ import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { getSingle } from './actions';
-import Comment from './components/Comment';
+import Comments from './components/Comments';
 import discussion from './components/discussion';
-import { scrollToTop, renderLoading } from './helpers';
+import { scrollToTop, renderLoading, getLinkUrl, setTitle } from './helpers';
 
 class Story extends Component {
 
@@ -12,6 +12,12 @@ class Story extends Component {
     const { id } = this.props.match.params;
     this.props.dispatch(getSingle('item', id));
     scrollToTop();
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.state && this.props.state.title) {
+      setTitle(this.props.state.title);
+    }
   }
   
   renderStory(data) {
@@ -21,7 +27,7 @@ class Story extends Component {
           <h1 className="single__title">
             <a 
               className="single__link" 
-              href={data.url}
+              href={getLinkUrl(data)}
             >
               {data.title}
               {data.domain && 
@@ -57,33 +63,15 @@ class Story extends Component {
     return renderLoading();
   }
 
-  
   renderComments(data) {
     if (data && Object.hasOwnProperty.call(data, 'id')) {
       if (! data.comments || data.comments.length === 0) return;
-      const commentsAmount = `Showing ${data.comments.length} ${data.comments.length === 1 ? 'comment' : 'comments'}`;
       return (
         <div className="container content">
-          {commentsAmount}
-          {this.renderCommentsCollection(data.comments)}
+          <Comments data={data.comments} />
         </div>
       );
     }
-  }
-
-  renderCommentsCollection(comments) {
-    return (
-      <ul className="comments__list">
-        {comments.map((comment, index) => (
-          <li 
-            key={index} 
-            className="comments__listItem"
-          >
-            <Comment data={comment} />
-          </li>
-        ))}
-      </ul>
-    )
   }
 
   renderContents(data) {
