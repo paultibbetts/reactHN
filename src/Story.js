@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { getSingle } from './actions';
 import Comment from './components/Comment';
 import discussion from './components/discussion';
-import { scrollToTop, renderLoading } from './helpers';
+import { scrollToTop, renderLoading, getLinkUrl } from './helpers';
 
 class Story extends Component {
 
@@ -21,7 +21,7 @@ class Story extends Component {
           <h1 className="single__title">
             <a 
               className="single__link" 
-              href={data.url}
+              href={getLinkUrl(data)}
             >
               {data.title}
               {data.domain && 

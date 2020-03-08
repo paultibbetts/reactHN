@@ -32,3 +32,20 @@ export const renderLoading = () => {
     </div>
   );
 }
+
+export const getPath = (data) => `/item/${data.id}`;
+
+const isValidUrl = (string) => {
+  try {
+    new URL(string);
+    return true;
+  } catch (e) {
+    return false;
+  }
+}
+
+export const getLinkUrl = (data) => 
+isValidUrl(data.url) ?
+  data.url :
+  getPath(data)
+
