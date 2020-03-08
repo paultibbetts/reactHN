@@ -5,18 +5,20 @@
   --v-dark-grey: #20232a;
   --light-grey: rgb(247, 247, 247);
   --blue: rgb(97, 218, 251);
-  --light-blue: rgba(187,239,253,0.6);
-  --v-light-blue: rgba(187,239,253,0.3);
+  --light-blue: rgba(187, 239, 253, 0.6);
+  --v-light-blue: rgba(187, 239, 253, 0.3);
   --hacker: #1ec503
 }
 
-*, *:before, *:after {
+*,
+*:before,
+*:after {
   box-sizing: border-box;
 }
 
 body {
   background: var(--light-grey);
-  font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   margin: 0;
   padding: 0;
 }
@@ -89,11 +91,11 @@ a:hover {
   padding: 1rem;
 }
 
-.content > *:first-child {
+.content>*:first-child {
   margin-top: 0;
 }
 
-.content > *:last-child {
+.content>*:last-child {
   margin-bottom: 0;
 }
 
@@ -105,7 +107,7 @@ a:hover {
   list-style-type: none;
   padding-left: 0;
 }
- 
+
 .item {
   border-bottom: 1px solid var(--grey);
   display: flex;
@@ -168,7 +170,7 @@ a:hover {
   margin-left: -0.25rem;
   padding: 0.25rem;
 }
-  
+
 .single__link:hover {
   background: var(--light-blue);
   color: rgb(26, 26, 26);
@@ -203,6 +205,11 @@ a:hover {
 .comments__listItem {
   border-top: 1px solid var(--light-grey);
   padding-top: 1rem;
+}
+
+.content>.comments__list>.comments__listItem:first-of-type {
+  border-top: 0;
+  padding-top: initial;
 }
 
 .comment__author {
@@ -245,7 +252,7 @@ pre code {
   background: var(--v-dark-grey);
   border-radius: 2px;
   display: block;
-  overflow: scroll;  
+  overflow: scroll;
   padding: 0.5rem;
 }
 
