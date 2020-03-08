@@ -3,6 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@types/jest": "^25.1.4",
+    "@types/node": "^13.9.0",
+    "@types/react": "^16.9.23",
+    "@types/react-dom": "^16.9.5",
     "anchorme": "^1.1.2",
     "dompurify": "^2.0.8",
     "react": "^16.13.0",
@@ -12,7 +16,8 @@
     "react-scripts": "3.4.0",
     "redux": "^4.0.5",
     "redux-thunk": "^2.3.0",
-    "serve": "^11.3.0"
+    "serve": "^11.3.0",
+    "typescript": "^3.8.3"
   },
   "scripts": {
     "start": "react-scripts start",
