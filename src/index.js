@@ -40,12 +40,12 @@ const root = (
             <Route exact path="/" component={Default} />
             <Route path="/item/:id" component={Story} />
             <Route path="/user/:id" component={User} />
+            <Route path="/news/:page?" render={props => <Collection {...props} type='news' />} />
             <Route path="/newest/:page?" render={props => <Collection {...props} type='newest' />} />
             <Route path="/show/:page?" render={props => <Collection {...props} type='show' />} />
             <Route path="/ask/:page?" render={props => <Collection {...props} type='ask' />} />
             <Route path="/jobs/:page?" render={props => <Collection {...props} type='jobs' />} />
             <Route exact path="/about" component={About} />
-            <Route path="/:page" render={props => <Collection {...props} type='news' />} />
             <Route component={NoMatch}/>
           </Switch>
         </main>

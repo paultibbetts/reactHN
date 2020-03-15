@@ -3,7 +3,19 @@ import { Link } from 'react-router-dom';
 import discussion from './discussion';
 import { getLinkUrl, getPath } from '../helpers';
 
-const ItemLink = (data) => (
+export interface ItemData {
+  id: number,
+  title: string,
+  domain: string,
+  points: number,
+  user: string,
+  time_ago: string,
+  type: string,
+  comments_count: number,
+  url: string
+}
+
+const ItemLink = (data: ItemData) => (
   <a href={getLinkUrl(data)} className="item__link break-words">
     {data.title}
     &nbsp;
@@ -12,7 +24,15 @@ const ItemLink = (data) => (
     }
   </a>
 )
-const Item = (props) => {
+
+interface ItemProps {
+  perPage: number,
+  index: number,
+  page: number
+  data: ItemData,
+}
+
+const Item = (props: ItemProps) => {
 
   const { data, index, page } = props;
   const perPage = props.perPage || 30;

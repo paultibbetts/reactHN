@@ -2,20 +2,20 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { scrollToTop } from '../helpers';
 
-const Pagination = (props) => {
-  let prevUrl, nextUrl;
+interface PaginationProps {
+  type: string,
+  page: number
+}
+
+const Pagination = (props: PaginationProps) => {
+  let prevUrl = '', nextUrl = '';
 
   const createLinks = () => {
     const page = Number(props.page);
-    const prev = `${(page - 1) > 1 ? page - 1 : 1 }`;
+    const prev = `${(page - 1) > 1 ? page - 1 : 1}`;
     const next = `${page + 1}`;
-    if (props.type === 'news') {
-      prevUrl = `/${prev}`;
-      nextUrl = `/${next}`;
-    } else {
-      prevUrl = `/${props.type}/${prev}`;
-      nextUrl = `/${props.type}/${next}`;
-    }
+    prevUrl = `/${props.type}/${prev}`;
+    nextUrl = `/${props.type}/${next}`;
   };
 
   createLinks();
@@ -23,12 +23,12 @@ const Pagination = (props) => {
   const total = 10; // max limit of hnapi
 
   return (
-    <div className="pagination content" style={{lineHeight: "1"}}>
+    <div className="pagination content" style={{ lineHeight: "1" }}>
       {page > 1 &&
         <Link
           to={prevUrl}
           onClick={() => scrollToTop()}
-          style={{marginRight: "0.5rem"}}
+          style={{ marginRight: "0.5rem" }}
         >
           prev
         </Link>
@@ -38,7 +38,7 @@ const Pagination = (props) => {
         <Link
           to={nextUrl}
           onClick={() => scrollToTop()}
-          style={{marginLeft: "0.5rem"}}
+          style={{ marginLeft: "0.5rem" }}
         >
           more
         </Link>

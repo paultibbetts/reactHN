@@ -3,12 +3,24 @@ import Comments from './Comments';
 import { Link } from 'react-router-dom';
 import { renderMarkup } from '../helpers';
 
-const Comment = (props) => {
+export interface Props {
+  level: number,
+  user: string,
+  time_ago: string
+  content: string,
+  comments: []
+}
+
+interface CommentProps {
+  data: Props
+}
+
+const Comment = (props: CommentProps) => {
   const { data: comment } = props;
   return (
     <div
       className="comment"
-      style={{marginLeft: `${comment.level * 1}rem`}}
+      style={{ marginLeft: `${comment.level * 1}rem` }}
     >
       <div>
         <Link
@@ -20,8 +32,8 @@ const Comment = (props) => {
         <span className="comment__timeAgo">{comment.time_ago}</span>
       </div>
       <div dangerouslySetInnerHTML={renderMarkup(comment.content)} />
-      { comment.comments.length > 0
-        ? <Comments data={comment.comments} /> 
+      {comment.comments.length > 0
+        ? <Comments data={comment.comments} />
         : ''
       }
     </div>

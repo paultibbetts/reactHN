@@ -1,7 +1,11 @@
 import React from 'react';
-import Comment from './Comment';
+import Comment, { Props as CommentProps } from './Comment';
 
-const Comments = (props) => {
+interface CommentsProps {
+  data: CommentProps[]
+}
+
+const Comments = (props: CommentsProps) => {
   const { data: comments } = props;
   return (
     <ul className="comments__list">

@@ -1,8 +1,10 @@
 import React from 'react';
 import dompurify from 'dompurify';
 import anchorme from 'anchorme';
+import { ItemData } from './components/Item';
+import CSS from 'csstype';
 
-export const renderMarkup = (markup) => {
+export const renderMarkup = (markup: string) => {
   const sanitized = dompurify.sanitize(markup);
   const anchored = anchorme(sanitized, {
     attributes: [
@@ -12,7 +14,7 @@ export const renderMarkup = (markup) => {
       }
     ]
   });
-  return ({__html: anchored});
+  return ({ __html: anchored });
 }
 
 export const scrollToTop = () => {
@@ -20,7 +22,7 @@ export const scrollToTop = () => {
 }
 
 export const renderLoading = () => {
-  const styles = {
+  const styles: CSS.Properties = {
     position: "fixed",
     top: "50%",
     left: "50%",
@@ -33,9 +35,9 @@ export const renderLoading = () => {
   );
 }
 
-export const getPath = (data) => `/item/${data.id}`;
+export const getPath = (data: ItemData) => `/item/${data.id}`;
 
-const isValidUrl = (string) => {
+const isValidUrl = (string: string) => {
   try {
     new URL(string);
     return true;
@@ -44,15 +46,15 @@ const isValidUrl = (string) => {
   }
 }
 
-export const getLinkUrl = (data) => 
-isValidUrl(data.url) ?
-  data.url :
-  getPath(data)
+export const getLinkUrl = (data: ItemData) =>
+  isValidUrl(data.url) ?
+    data.url :
+    getPath(data)
 
-export const setTitle = (title) => {
-  document.title = `${title ? ucFirst(title) + ' - ' : '' } React HN`;
+export const setTitle = (title: string) => {
+  document.title = `${title ? ucFirst(title) + ' - ' : ''} React HN`;
 }
 
-export const ucFirst = (string) => {
+export const ucFirst = (string: string) => {
   return string.charAt(0).toUpperCase() + string.slice(1);
 }
