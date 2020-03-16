@@ -8,8 +8,8 @@ import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 import reducer from './reducers';
 
-import { 
-  BrowserRouter as Router, 
+import {
+  BrowserRouter as Router,
   Route,
   Switch
 } from 'react-router-dom';
@@ -23,10 +23,10 @@ import Navigation from './components/Navigation';
 import About from './components/About';
 import NoMatch from './components/NoMatch';
 
-const middleware = [ thunk ];
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const middleware = [thunk];
+const composeEnhancers = (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(
-  reducer, 
+  reducer,
   composeEnhancers(applyMiddleware(...middleware))
 );
 
@@ -46,7 +46,7 @@ const root = (
             <Route path="/ask/:page?" render={props => <Collection {...props} type='ask' />} />
             <Route path="/jobs/:page?" render={props => <Collection {...props} type='jobs' />} />
             <Route exact path="/about" component={About} />
-            <Route component={NoMatch}/>
+            <Route component={NoMatch} />
           </Switch>
         </main>
       </div>

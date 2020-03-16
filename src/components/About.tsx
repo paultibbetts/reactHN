@@ -1,9 +1,9 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, FunctionComponent } from 'react';
 import { setTitle } from '../helpers';
 
-const About = () => {
+const About: FunctionComponent = () => {
   useEffect(() => {
-     setTitle('about')
+    setTitle('about')
   })
 
   return (
@@ -20,9 +20,9 @@ const About = () => {
           View the source code on <a href="https://github.com/ptibbetts/reactHN">GitHub</a>
         </p>
         <p>
-        <a className="<3" href="https://paultibbetts.uk">
-          <span role="img" aria-label="love">💙</span>
-        </a>
+          <a className="<3" href="https://paultibbetts.uk">
+            <span role="img" aria-label="love">💙</span>
+          </a>
         </p>
       </div>
     </div>

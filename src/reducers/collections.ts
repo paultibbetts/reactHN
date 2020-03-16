@@ -1,12 +1,15 @@
-const initialState = {
+import { IAction, IStoreState } from '../types';
+
+const initialState: IStoreState = {
   news: [],
   show: [],
   ask: [],
   newest: [],
   jobs: [],
-};
+  isFetching: false
+}
 
-export default (state = initialState, action) => {
+export default (state: IStoreState = initialState, action: IAction) => {
   switch (action.type) {
     case 'REQUEST_LIST':
       return {

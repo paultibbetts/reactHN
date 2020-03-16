@@ -3,7 +3,7 @@ import Comments from './Comments';
 import { Link } from 'react-router-dom';
 import { renderMarkup } from '../helpers';
 
-export interface Props {
+export interface IProps {
   level: number,
   user: string,
   time_ago: string
@@ -11,11 +11,11 @@ export interface Props {
   comments: []
 }
 
-interface CommentProps {
-  data: Props
+interface ICommentProps {
+  data: IProps
 }
 
-const Comment = (props: CommentProps) => {
+const Comment = (props: ICommentProps) => {
   const { data: comment } = props;
   return (
     <div

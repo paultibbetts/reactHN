@@ -1,7 +1,7 @@
 import React from 'react';
 import dompurify from 'dompurify';
 import anchorme from 'anchorme';
-import { ItemData } from './components/Item';
+import { IItem } from './types';
 import CSS from 'csstype';
 
 export const renderMarkup = (markup: string) => {
@@ -35,7 +35,7 @@ export const renderLoading = () => {
   );
 }
 
-export const getPath = (data: ItemData) => `/item/${data.id}`;
+export const getPath = (data: IItem) => `/item/${data.id}`;
 
 const isValidUrl = (string: string) => {
   try {
@@ -46,7 +46,7 @@ const isValidUrl = (string: string) => {
   }
 }
 
-export const getLinkUrl = (data: ItemData) =>
+export const getLinkUrl = (data: IItem) =>
   isValidUrl(data.url) ?
     data.url :
     getPath(data)

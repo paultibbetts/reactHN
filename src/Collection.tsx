@@ -1,12 +1,25 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import { connect, DispatchProp } from 'react-redux';
+import { Redirect, RouteComponentProps } from 'react-router-dom';
 import { getCollection } from './actions';
 import Item from './components/Item';
 import Pagination from './components/Pagination';
 import { scrollToTop, renderLoading, setTitle } from './helpers';
+import { IStoreState, IItem, CollectionTypes } from './types';
 
-class Collection extends Component {
+interface MatchParams {
+  name?: string,
+  page?: string
+}
+
+interface Props extends IStoreState,
+  RouteComponentProps<MatchParams>,
+  DispatchProp {
+  type: CollectionTypes,
+  dispatch: any
+}
+
+class Collection extends Component<Props> {
 
   componentDidMount() {
     this.getData(this.props.type);
@@ -14,25 +27,22 @@ class Collection extends Component {
     scrollToTop();
   }
 
-  componentDidUpdate(prevProps) {
+  componentDidUpdate(prevProps: Props) {
     const typeChanged = this.props.type !== prevProps.type;
     const pageChanged = this.props.match.params.page !== prevProps.match.params.page
     if (typeChanged || pageChanged) {
       setTitle(this.props.type)
-      this.getData(this.props.type, this.props.match.params.page || null);
+      this.getData(this.props.type, this.props.match.params.page);
     }
   }
 
-  getData(type, page = null) {
-    if (page === null) {
-      page = this.props.match.params.page || 1;
-    }
-    this.props.dispatch(getCollection(type, page));
+  getData(type: string, page: string = '1') {
+    this.props.dispatch(getCollection(type, page || '1'));
   }
-  
-  renderContent(content) {
-    if (! content) return;
-    const page = this.props.match.params.page || 1;
+
+  renderContent(content: any[]) {
+    if (!content) return;
+    const page = this.props.match.params.page || '1';
     if (content.length > 0) {
       return (
         <div>
@@ -41,8 +51,8 @@ class Collection extends Component {
         </div>
       );
     }
-    if (! this.props.isFetching) {
-      const url = this.props.match.path.replace(':page?', page - 1);
+    if (!this.props.isFetching) {
+      const url = this.props.match.path.replace(':page?', (Number(page) - 1).toString());
       return (
         <div className="container content">
           <p>There's nothing to show here…</p>
@@ -55,7 +65,7 @@ class Collection extends Component {
     renderLoading();
   }
 
-  renderList(data, perPage) {
+  renderList(data: IItem[], perPage: number) {
     let classNames = "collection content";
     if (this.props.isFetching) {
       classNames = `${classNames} is-fetching`;
@@ -69,14 +79,14 @@ class Collection extends Component {
     );
   }
 
-  renderItems(data, perPage) {
-    const page = this.props.match.params.page || 1;
-    return data.map((data, index) => (
+  renderItems(data: IItem[], perPage: number) {
+    const page = this.props.match.params.page || '1';
+    return data.map((data, index: number) => (
       <li key={index}>
-        <Item 
-          key={index} 
-          index={index} 
-          data={data} 
+        <Item
+          key={index}
+          index={index}
+          data={data}
           page={page}
           perPage={perPage}
         />
@@ -85,19 +95,19 @@ class Collection extends Component {
   }
 
   render() {
-    if (this.props.match.params.page > 10) {
+    if (Number(this.props.match.params.page) > 10) {
       return (
-        <Redirect to={this.props.match.path.replace(':page', 10)}/>
+        <Redirect to={this.props.match.path.replace(':page', '10')} />
       );
     }
     return (
       <div className="container">
-        {  this.renderContent(this.props[this.props.type]) }
+        {this.renderContent(this.props[this.props.type])}
       </div>
     );
   }
 }
 
-const mapStateToProps = state => state.collections;
+const mapStateToProps = (state: any) => state.collections;
 
-export default connect(mapStateToProps)(Collection);
+export default connect<IStoreState>(mapStateToProps)(Collection);

@@ -1,7 +1,11 @@
-export const getCollection = (type, page) => 
-  dispatch => {
+import { Dispatch } from 'redux';
+
+const API_URL = 'https://node-hnapi.herokuapp.com/';
+
+export const getCollection = (type: string, page: string) =>
+  (dispatch: Dispatch) => {
     dispatch(processData('REQUEST_LIST', page));
-    fetch(`https://node-hnapi.herokuapp.com/${type}?page=${page}`)
+    fetch(`${API_URL}${type}?page=${page}`)
       .then(res => res.json())
       .then(data => {
         dispatch(processData(`${type.toUpperCase()}_LIST`, data));
@@ -11,10 +15,10 @@ export const getCollection = (type, page) =>
       })
   };
 
-export const getSingle = (type, id) =>
-  dispatch => {
+export const getSingle = (type: string, id: string) =>
+  (dispatch: Dispatch) => {
     dispatch(processData('REQUEST_DATA'));
-    fetch(`https://node-hnapi.herokuapp.com/${type}/${id}`)
+    fetch(`${API_URL}${type}/${id}`)
       .then(res => res.json())
       .then(data => {
         dispatch(processData('RECEIVE_DATA', data));
@@ -24,7 +28,7 @@ export const getSingle = (type, id) =>
       })
   };
 
-const processData = (type, data) => {
+const processData = (type: string, data?: any) => {
   return {
     type, data
   };

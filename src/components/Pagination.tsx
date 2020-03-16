@@ -2,12 +2,12 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { scrollToTop } from '../helpers';
 
-interface PaginationProps {
+interface IPaginationProps {
   type: string,
-  page: number
+  page: string
 }
 
-const Pagination = (props: PaginationProps) => {
+const Pagination = (props: IPaginationProps) => {
   let prevUrl = '', nextUrl = '';
 
   const createLinks = () => {

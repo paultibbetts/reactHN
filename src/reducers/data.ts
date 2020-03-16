@@ -1,6 +1,8 @@
+import { IAction } from '../types';
+
 const initialState = {};
 
-export default (state = initialState, action) => {
+export default (state = initialState, action: IAction) => {
   switch (action.type) {
     case 'REQUEST_DATA':
       return {

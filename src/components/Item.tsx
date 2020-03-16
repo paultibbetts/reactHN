@@ -2,20 +2,9 @@ import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import discussion from './discussion';
 import { getLinkUrl, getPath } from '../helpers';
+import { IItem } from '../types';
 
-export interface ItemData {
-  id: number,
-  title: string,
-  domain: string,
-  points: number,
-  user: string,
-  time_ago: string,
-  type: string,
-  comments_count: number,
-  url: string
-}
-
-const ItemLink = (data: ItemData) => (
+const ItemLink = (data: IItem) => (
   <a href={getLinkUrl(data)} className="item__link break-words">
     {data.title}
     &nbsp;
@@ -25,18 +14,18 @@ const ItemLink = (data: ItemData) => (
   </a>
 )
 
-interface ItemProps {
+interface IItemProps {
   perPage: number,
   index: number,
-  page: number
-  data: ItemData,
+  page: string
+  data: IItem,
 }
 
-const Item = (props: ItemProps) => {
+const Item = (props: IItemProps) => {
 
   const { data, index, page } = props;
   const perPage = props.perPage || 30;
-  const position = (index + 1) + (page - 1) * perPage;
+  const position = (index + 1) + (Number(page) - 1) * perPage;
 
   return (
     <div className="item">

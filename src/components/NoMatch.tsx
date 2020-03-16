@@ -1,12 +1,12 @@
 import React from 'react';
 
-interface NoMatchProps {
+interface INoMatchProps {
   location: {
     pathname: string
   }
 }
 
-const NoMatch = ({ location }: NoMatchProps) => (
+const NoMatch = ({ location }: INoMatchProps) => (
   <h1>Nothing was found for {location.pathname}</h1>
 );
 

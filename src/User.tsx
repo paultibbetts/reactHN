@@ -1,33 +1,46 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import { connect, DispatchProp } from 'react-redux';
+import { RouteComponentProps } from 'react-router-dom';
 import { getSingle } from './actions';
 import { renderMarkup, renderLoading } from './helpers';
+import { IStoreState, IUser } from './types';
 
-class User extends Component {
+interface MatchParams {
+  id: string
+}
 
-  componentWillMount() {
+interface IProps extends IStoreState,
+  RouteComponentProps<MatchParams>,
+  DispatchProp {
+  dispatch: any,
+  state: IUser
+}
+
+class User extends Component<IProps> {
+
+  componentDidMount() {
     const { id } = this.props.match.params;
     this.props.dispatch(getSingle('user', id));
   }
 
-  getRating = (karma) => {
+  getRating = (karma: IProps['state']['karma']) => {
     const length = karma.toString().length;
     if (karma > 100) {
-      return {label:'great',icon:'🔥'.repeat(length)};
+      return { label: 'great', icon: '🔥'.repeat(length) };
     } else if (karma < 0) {
-      return {label:'bad',icon:'💩'.repeat(length - 1)};
+      return { label: 'bad', icon: '💩'.repeat(length - 1) };
     } else if (karma === 0) {
-      return {label:'new',icon:'🆕'};
-    } 
-    return {label:'good',icon:'👍'.repeat(length)};
+      return { label: 'new', icon: '🆕' };
+    }
+    return { label: 'good', icon: '👍'.repeat(length) };
   }
 
-  renderRating = (karma) => {
-    if (! karma) return;
+  renderRating = (karma: IProps['state']['karma']) => {
+    if (!karma) return;
     const rating = this.getRating(karma);
     return (
-      <span 
-        role="img" 
+      <span
+        role="img"
         aria-label={`${rating.label} rating`}
         title={rating.label}
       >
@@ -35,8 +48,8 @@ class User extends Component {
       </span>
     );
   }
-  
-  renderUser(data) {
+
+  renderUser(data: IProps['state']) {
     if (!data || !Object.hasOwnProperty.call(data, 'id')) return;
     return (
       <div className="content">
@@ -49,24 +62,24 @@ class User extends Component {
           <strong>Karma:</strong>&nbsp;
           {data.karma} {this.renderRating(data.karma)}
         </div>
-        <div dangerouslySetInnerHTML={renderMarkup(data.about)}/>
+        <div dangerouslySetInnerHTML={renderMarkup(data.about)} />
       </div>
     );
-  }  
+  }
 
   render() {
     const { state, isFetching } = this.props;
     return (
       <div className="container">
-        {isFetching ? 
-           renderLoading() : 
-           this.renderUser(state)
+        {isFetching ?
+          renderLoading() :
+          this.renderUser(state)
         }
       </div>
     );
   }
 }
 
-const mapStateToProps = state => state.data;
+const mapStateToProps = (state: any) => state.data;
 
-export default connect(mapStateToProps)(User);
+export default connect<IStoreState>(mapStateToProps)(User);
