@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import registerServiceWorker from './registerServiceWorker';
+import * as serviceWorker from './serviceWorker';
 
 import { createStore, applyMiddleware, compose } from 'redux';
 import { Provider } from 'react-redux';
@@ -55,4 +55,4 @@ const root = (
 );
 
 ReactDOM.render(root, document.getElementById('root'));
-registerServiceWorker();
+serviceWorker.register();
