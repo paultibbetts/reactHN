@@ -209,6 +209,11 @@ a:hover {
   padding-top: 1rem;
 }
 
+.content>.comments__list>.comments__listItem:first-of-type {
+  border-top: 0;
+  padding-top: initial;
+}
+
 .comment__author {
   text-decoration: underline;
 }
