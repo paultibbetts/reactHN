@@ -28,7 +28,7 @@ const links: { dest: string, label: string }[] = [
 const className = "navigation__link";
 const activeClassName = `${className}--active`;
 
-const Navigation = () => (
+const Navigation: React.FC = () => (
   <nav
     className="navigation"
     onClick={() => scrollToTop()}

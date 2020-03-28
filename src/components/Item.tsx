@@ -2,9 +2,9 @@ import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import discussion from './discussion';
 import { getLinkUrl, getPath } from '../helpers';
-import { IItem } from '../types';
+import { ItemModel } from '../models/Item';
 
-const ItemLink = (data: IItem) => (
+const ItemLink = (data: ItemModel) => (
   <a href={getLinkUrl(data)} className="item__link break-words">
     {data.title}
     &nbsp;
@@ -18,10 +18,10 @@ interface IItemProps {
   perPage: number,
   index: number,
   page: string
-  data: IItem,
+  data: ItemModel,
 }
 
-const Item = (props: IItemProps) => {
+const Item = (props: IItemProps): JSX.Element => {
 
   const { data, index, page } = props;
   const perPage = props.perPage || 30;

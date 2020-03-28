@@ -7,19 +7,10 @@ interface IPaginationProps {
   page: string
 }
 
-const Pagination = (props: IPaginationProps) => {
-  let prevUrl = '', nextUrl = '';
-
-  const createLinks = () => {
-    const page = Number(props.page);
-    const prev = `${(page - 1) > 1 ? page - 1 : 1}`;
-    const next = `${page + 1}`;
-    prevUrl = `/${props.type}/${prev}`;
-    nextUrl = `/${props.type}/${next}`;
-  };
-
-  createLinks();
+const Pagination = (props: IPaginationProps): JSX.Element => {
   const page = Number(props.page);
+  const prevUrl = `/${props.type}/${(page - 1) > 1 ? page - 1 : 1}`;
+  const nextUrl = `/${props.type}/${page + 1}`;
   const total = 10; // max limit of hnapi
 
   return (

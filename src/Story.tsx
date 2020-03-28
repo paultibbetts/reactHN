@@ -5,7 +5,9 @@ import { getSingle } from './actions';
 import Comments from './components/Comments';
 import discussion from './components/discussion';
 import { scrollToTop, renderLoading, getLinkUrl, setTitle } from './helpers';
-import { IStoreState, IItem } from './types';
+import { IStoreState } from './types';
+import { ItemModel } from './models/Item';
+import { RootState } from './reducers';
 
 interface MatchParams {
   id: string
@@ -16,24 +18,24 @@ interface IProps extends IStoreState,
   DispatchProp {
   dispatch: any,
   isFetching: boolean,
-  state: IItem
+  state: ItemModel
 }
 
 class Story extends Component<IProps> {
 
-  componentDidMount() {
+  componentDidMount(): void {
     const { id } = this.props.match.params;
     this.props.dispatch(getSingle('item', id));
     scrollToTop();
   }
 
-  componentDidUpdate() {
+  componentDidUpdate(): void {
     if (this.props.state && this.props.state.title) {
       setTitle(this.props.state.title);
     }
   }
 
-  renderStory(data: IItem) {
+  renderStory(data: ItemModel): JSX.Element {
     if (data && Object.hasOwnProperty.call(data, 'comments')) {
       return (
         <div className="single container content">
@@ -76,7 +78,7 @@ class Story extends Component<IProps> {
     return renderLoading();
   }
 
-  renderComments(data: IItem) {
+  renderComments(data: ItemModel): JSX.Element | undefined {
     if (data && Object.hasOwnProperty.call(data, 'id')) {
       if (!data.comments || data.comments.length === 0) return;
       return (
@@ -87,7 +89,7 @@ class Story extends Component<IProps> {
     }
   }
 
-  renderContents(data: IItem) {
+  renderContents(data: ItemModel): JSX.Element {
     let classNames;
     if (this.props.isFetching) {
       classNames = 'is-fetching';
@@ -100,7 +102,7 @@ class Story extends Component<IProps> {
     );
   }
 
-  render() {
+  render(): JSX.Element {
     const { state } = this.props;
     return (
       <div className="container">
@@ -110,6 +112,6 @@ class Story extends Component<IProps> {
   }
 }
 
-const mapStateToProps = (state: any) => state.data;
+const mapStateToProps = (state: RootState) => state.data;
 
-export default connect<IStoreState>(mapStateToProps)(Story);
+export default connect(mapStateToProps)(Story);

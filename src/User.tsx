@@ -3,7 +3,9 @@ import { connect, DispatchProp } from 'react-redux';
 import { RouteComponentProps } from 'react-router-dom';
 import { getSingle } from './actions';
 import { renderMarkup, renderLoading } from './helpers';
-import { IStoreState, IUser } from './types';
+import { IStoreState } from './types';
+import { UserModel } from './models/User';
+import { RootState } from './reducers';
 
 interface MatchParams {
   id: string
@@ -13,17 +15,17 @@ interface IProps extends IStoreState,
   RouteComponentProps<MatchParams>,
   DispatchProp {
   dispatch: any,
-  state: IUser
+  state: UserModel
 }
 
 class User extends Component<IProps> {
 
-  componentDidMount() {
+  componentDidMount(): void {
     const { id } = this.props.match.params;
     this.props.dispatch(getSingle('user', id));
   }
 
-  getRating = (karma: IProps['state']['karma']) => {
+  getRating = (karma: number): { label: string; icon: string } => {
     const length = karma.toString().length;
     if (karma > 100) {
       return { label: 'great', icon: '🔥'.repeat(length) };
@@ -35,7 +37,7 @@ class User extends Component<IProps> {
     return { label: 'good', icon: '👍'.repeat(length) };
   }
 
-  renderRating = (karma: IProps['state']['karma']) => {
+  renderRating = (karma: number): JSX.Element | undefined => {
     if (!karma) return;
     const rating = this.getRating(karma);
     return (
@@ -49,7 +51,7 @@ class User extends Component<IProps> {
     );
   }
 
-  renderUser(data: IProps['state']) {
+  renderUser(data: UserModel): JSX.Element | undefined {
     if (!data || !Object.hasOwnProperty.call(data, 'id')) return;
     return (
       <div className="content">
@@ -67,7 +69,7 @@ class User extends Component<IProps> {
     );
   }
 
-  render() {
+  render(): JSX.Element {
     const { state, isFetching } = this.props;
     return (
       <div className="container">
@@ -80,6 +82,6 @@ class User extends Component<IProps> {
   }
 }
 
-const mapStateToProps = (state: any) => state.data;
+const mapStateToProps = (state: RootState) => state.data;
 
-export default connect<IStoreState>(mapStateToProps)(User);
+export default connect(mapStateToProps)(User);

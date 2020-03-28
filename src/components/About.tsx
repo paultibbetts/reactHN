@@ -1,7 +1,7 @@
-import React, { useEffect, FunctionComponent } from 'react';
+import React, { useEffect } from 'react';
 import { setTitle } from '../helpers';
 
-const About: FunctionComponent = () => {
+const About: React.FC = () => {
   useEffect(() => {
     setTitle('about')
   })

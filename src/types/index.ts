@@ -1,39 +1,30 @@
-export interface IItem {
-  id: number,
-  title: string,
-  domain: string,
-  points: number,
-  user: string,
-  time_ago: string,
-  type: string,
-  comments: any[],
-  comments_count: number,
-  url: string
-}
+import { ItemModel } from '../models/Item';
 
 export interface ICollectionState {
-  news: IItem[],
-  newest: IItem[],
-  show: IItem[],
-  ask: IItem[],
-  jobs: IItem[],
-}
-
-export interface IUser {
-  id: number,
-  created_time: number,
-  created: string,
-  karma: number,
-  avg: null,
-  about: string
-}
-
-export interface IAction {
-  type: string,
-  data: any
+  news: ItemModel[],
+  newest: ItemModel[],
+  show: ItemModel[],
+  ask: ItemModel[],
+  jobs: ItemModel[],
 }
 
 export type CollectionTypes = keyof ICollectionState;
+
+export enum Actions {
+  REQUEST_LIST = 'REQUEST_LIST',
+  NEWS_LIST = 'NEWS_LIST',
+  SHOW_LIST = 'SHOW_LIST',
+  ASK_LIST = 'ASK_LIST',
+  NEWEST_LIST = 'NEWEST_LIST',
+  JOBS_LIST = 'JOBS_LIST',
+  REQUEST_DATA = 'REQUEST_DATA',
+  RECEIVE_DATA = 'RECEIVE_DATA'
+}
+
+export interface IAction {
+  type: Actions,
+  data: any
+}
 
 export interface IStoreState extends ICollectionState {
   isFetching: boolean

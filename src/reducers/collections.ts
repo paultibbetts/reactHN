@@ -1,4 +1,4 @@
-import { IAction, IStoreState } from '../types';
+import { Actions, IAction, IStoreState } from '../types';
 
 const initialState: IStoreState = {
   news: [],
@@ -9,38 +9,38 @@ const initialState: IStoreState = {
   isFetching: false
 }
 
-export default (state: IStoreState = initialState, action: IAction) => {
+export default (state: IStoreState = initialState, action: IAction): IStoreState => {
   switch (action.type) {
-    case 'REQUEST_LIST':
+    case Actions.REQUEST_LIST:
       return {
         ...state,
         isFetching: true
       }
-    case 'NEWS_LIST':
+    case Actions.NEWS_LIST:
       return {
         ...state,
         isFetching: false,
         news: action.data,
       };
-    case 'SHOW_LIST':
+    case Actions.SHOW_LIST:
       return {
         ...state,
         isFetching: false,
         show: action.data,
       };
-    case 'ASK_LIST':
+    case Actions.ASK_LIST:
       return {
         ...state,
         isFetching: false,
         ask: action.data,
       };
-    case 'NEWEST_LIST':
+    case Actions.NEWEST_LIST:
       return {
         ...state,
         isFetching: false,
         newest: action.data,
       };
-    case 'JOBS_LIST':
+    case Actions.JOBS_LIST:
       return {
         ...state,
         isFetching: false,

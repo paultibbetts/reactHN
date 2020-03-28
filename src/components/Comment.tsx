@@ -2,20 +2,13 @@ import React from 'react';
 import Comments from './Comments';
 import { Link } from 'react-router-dom';
 import { renderMarkup } from '../helpers';
-
-export interface IProps {
-  level: number,
-  user: string,
-  time_ago: string
-  content: string,
-  comments: []
-}
+import { CommentModel } from '../models/Comment';
 
 interface ICommentProps {
-  data: IProps
+  data: CommentModel
 }
 
-const Comment = (props: ICommentProps) => {
+const Comment = (props: ICommentProps): JSX.Element => {
   const { data: comment } = props;
   return (
     <div

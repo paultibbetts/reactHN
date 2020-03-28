@@ -6,7 +6,8 @@ import * as serviceWorker from './serviceWorker';
 import { createStore, applyMiddleware, compose } from 'redux';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
-import reducer from './reducers';
+import reducer, { RootState } from './reducers';
+import { IAction } from './types';
 
 import {
   BrowserRouter as Router,
@@ -25,12 +26,12 @@ import NoMatch from './components/NoMatch';
 
 const middleware = [thunk];
 const composeEnhancers = (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-const store = createStore(
+const store = createStore<RootState, IAction, any, any>(
   reducer,
   composeEnhancers(applyMiddleware(...middleware))
 );
 
-const root = (
+const root: JSX.Element = (
   <Provider store={store}>
     <Router>
       <div>
