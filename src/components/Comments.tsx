@@ -1,7 +1,12 @@
 import React from 'react';
 import Comment from './Comment';
+import { CommentModel } from '../models/Comment';
 
-const Comments = (props) => {
+interface ICommentsProps {
+  data: CommentModel[]
+}
+
+const Comments = (props: ICommentsProps): JSX.Element => {
   const { data: comments } = props;
   return (
     <ul className="comments__list">

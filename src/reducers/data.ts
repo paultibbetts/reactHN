@@ -1,13 +1,15 @@
+import { IAction, Actions } from '../types';
+
 const initialState = {};
 
-export default (state = initialState, action) => {
+export default (state = initialState, action: IAction) => {
   switch (action.type) {
-    case 'REQUEST_DATA':
+    case Actions.REQUEST_DATA:
       return {
         ...state,
         isFetching: true
       }
-    case 'RECEIVE_DATA':
+    case Actions.RECEIVE_DATA:
       return {
         ...state,
         isFetching: false,

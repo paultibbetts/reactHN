@@ -2,14 +2,11 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { scrollToTop } from '../helpers';
 
-// Top news has a slightly different URL structure
-const isTopNews = (match, location) => {
-  if (! match) return;
-  const exp = '^/[0-9]+$';
-  return new RegExp(exp).test(location.pathname);
-}
-
-const links = [
+const links: { dest: string, label: string }[] = [
+  {
+    dest: "/news",
+    label: "top"
+  },
   {
     dest: "/newest",
     label: "new"
@@ -31,26 +28,16 @@ const links = [
 const className = "navigation__link";
 const activeClassName = `${className}--active`;
 
-const Navigation = () => (
+const Navigation: React.FC = () => (
   <nav
     className="navigation"
     onClick={() => scrollToTop()}
   >
     <div className="container">
       <ul className="navigation__list">
-        <li className="navigation__listItem">
-          <NavLink 
-            to="/" 
-            className={className}
-            activeClassName={activeClassName}
-            isActive={isTopNews}
-          >
-            top
-          </NavLink>
-        </li>
         {links.map((link, index) => (
           <li className="navigation__listItem" key={index}>
-            <NavLink 
+            <NavLink
               to={link.dest}
               className={className}
               activeClassName={activeClassName}

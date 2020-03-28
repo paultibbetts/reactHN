@@ -1,9 +1,12 @@
 import React, { Component, Fragment } from 'react';
-import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { connect, DispatchProp } from 'react-redux';
+import { Link, RouteComponentProps } from 'react-router-dom';
 import { getSingle } from './actions';
 import Comments from './components/Comments';
 import discussion from './components/discussion';
+import { IStoreState } from './types';
+import { ItemModel } from './models/Item';
+import { RootState } from './reducers';
 import {
   scrollToTop,
   renderLoading,
@@ -12,31 +15,43 @@ import {
   setTitle
 } from './helpers';
 
-class Story extends Component {
+interface MatchParams {
+  id: string
+}
 
-  componentDidMount() {
+interface IProps extends IStoreState,
+  RouteComponentProps<MatchParams>,
+  DispatchProp {
+  dispatch: any,
+  isFetching: boolean,
+  state: ItemModel
+}
+
+class Story extends Component<IProps> {
+
+  componentDidMount(): void {
     const { id } = this.props.match.params;
     this.props.dispatch(getSingle('item', id));
     scrollToTop();
   }
 
-  componentDidUpdate(prevProps) {
+  componentDidUpdate(): void {
     if (this.props.state && this.props.state.title) {
       setTitle(this.props.state.title);
     }
   }
-  
-  renderStory(data) {
+
+  renderStory(data: ItemModel): JSX.Element {
     if (data && Object.hasOwnProperty.call(data, 'comments')) {
       return (
         <div className="single container content">
           <h1 className="single__title">
-            <a 
-              className="single__link" 
+            <a
+              className="single__link"
               href={getLinkUrl(data)}
             >
               {data.title}
-              {data.domain && 
+              {data.domain &&
                 <Fragment>
                   &nbsp;
                   <span className="single__domain">({data.domain})</span>
@@ -47,13 +62,13 @@ class Story extends Component {
           <div className="single__meta">
             {data.points && (
               <Fragment>
-                {data.points} {data.points === 1 ? 'point ' : 'points '} 
+                {data.points} {data.points === 1 ? 'point ' : 'points '}
                 by <Link to={`/user/${data.user}`}>{data.user}</Link>
               </Fragment>
             )}
             {discussion(data) &&
               <Fragment>
-                &nbsp;|&nbsp; 
+                &nbsp;|&nbsp;
                 {discussion(data)}
               </Fragment>
             }
@@ -65,7 +80,7 @@ class Story extends Component {
         </div>
       );
     }
-    if (! this.props.isFetching) {
+    if (!this.props.isFetching) {
       return (
         <p>Nothing to show…</p>
       )
@@ -73,9 +88,9 @@ class Story extends Component {
     return renderLoading();
   }
 
-  renderComments(data) {
+  renderComments(data: ItemModel): JSX.Element | undefined {
     if (data && Object.hasOwnProperty.call(data, 'id')) {
-      if (! data.comments || data.comments.length === 0) return;
+      if (!data.comments || data.comments.length === 0) return;
       return (
         <div className="container content">
           <Comments data={data.comments} />
@@ -84,7 +99,7 @@ class Story extends Component {
     }
   }
 
-  renderContents(data) {
+  renderContents(data: ItemModel): JSX.Element {
     let classNames;
     if (this.props.isFetching) {
       classNames = 'is-fetching';
@@ -97,7 +112,7 @@ class Story extends Component {
     );
   }
 
-  render() {
+  render(): JSX.Element {
     const { state } = this.props;
     return (
       <div className="container">
@@ -107,6 +122,6 @@ class Story extends Component {
   }
 }
 
-const mapStateToProps = state => state.data;
+const mapStateToProps = (state: RootState) => state.data;
 
 export default connect(mapStateToProps)(Story);
