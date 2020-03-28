@@ -198,6 +198,10 @@ a:hover {
   color: inherit;
 }
 
+.single__content {
+  margin: 1rem 0;
+}
+
 .comments__list {
   list-style-type: none;
   margin: 1rem 0;

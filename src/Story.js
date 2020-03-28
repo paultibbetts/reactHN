@@ -4,7 +4,13 @@ import { Link } from 'react-router-dom';
 import { getSingle } from './actions';
 import Comments from './components/Comments';
 import discussion from './components/discussion';
-import { scrollToTop, renderLoading, getLinkUrl, setTitle } from './helpers';
+import {
+  scrollToTop,
+  renderLoading,
+  renderMarkup,
+  getLinkUrl,
+  setTitle
+} from './helpers';
 
 class Story extends Component {
 
@@ -52,6 +58,10 @@ class Story extends Component {
               </Fragment>
             }
           </div>
+          <div
+            className="single__content"
+            dangerouslySetInnerHTML={renderMarkup(data.content)}
+          />
         </div>
       );
     }
