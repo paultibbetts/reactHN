@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { getSingle } from './actions';
 import Comment from './components/Comment';
 import discussion from './components/discussion';
-import { scrollToTop, renderLoading, getLinkUrl } from './helpers';
+import { scrollToTop, renderLoading, getLinkUrl, setTitle } from './helpers';
 
 class Story extends Component {
 
@@ -12,6 +12,12 @@ class Story extends Component {
     const { id } = this.props.match.params;
     this.props.dispatch(getSingle('item', id));
     scrollToTop();
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.state && this.props.state.title) {
+      setTitle(this.props.state.title);
+    }
   }
   
   renderStory(data) {
