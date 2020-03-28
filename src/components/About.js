@@ -13,8 +13,8 @@ const About = () => {
         <p>
           Yet another Hacker News clone
         </p>
-        <p>
-          Featuring <a href="https://reactjs.org/">React 16</a>, <a href="https://reacttraining.com/react-router/">React Router 4</a>, <a href="https://redux.js.org/docs/basics/UsageWithReact.html">React Redux</a>, <a href="https://github.com/gaearon/redux-thunk">Redux Thunk</a>, <a href="https://github.com/cheeaun/node-hnapi/">HN API</a>, CSS variables, unread link highlighting and clickable links in comments.
+        <p> 
+          Featuring <a href="https://reactjs.org/">React 16</a>, <a href="https://reacttraining.com/react-router/">React Router 4</a>, <a href="https://react-redux.js.org/">React Redux</a>, <a href="https://github.com/gaearon/redux-thunk">Redux Thunk</a>, <a href="https://github.com/cheeaun/node-hnapi/">HN API</a>, CSS variables, unread link highlighting and clickable links in comments.
         </p>
         <p>
           View the source code on <a href="https://github.com/ptibbetts/reactHN">GitHub</a>
