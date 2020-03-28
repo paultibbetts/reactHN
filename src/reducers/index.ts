@@ -1,12 +1,12 @@
 import { combineReducers } from 'redux';
-import collections from './collections';
-import data from './data';
+import collectionSlice from '../features/collection/collectionSlice';
+import itemSlice from '../features/item/itemSlice';
+import userSlice from '../features/user/userSlice';
 
 const rootReducer = combineReducers({
-  collections,
-  data
+  collections: collectionSlice,
+  items: itemSlice,
+  user: userSlice
 });
 
 export default rootReducer;
-
-export type RootState = ReturnType<typeof rootReducer>

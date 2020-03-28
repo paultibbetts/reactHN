@@ -3,8 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@reduxjs/toolkit": "^1.3.2",
     "@types/dompurify": "^2.0.1",
-    "@types/jest": "^25.1.4",
     "@types/node": "^13.9.5",
     "@types/react": "^16.9.26",
     "@types/react-dom": "^16.9.5",
@@ -16,7 +16,7 @@
     "react-dom": "^16.13.0",
     "react-redux": "^7.2.0",
     "react-router-dom": "^5.1.2",
-    "react-scripts": "3.4.0",
+    "react-scripts": "3.4.1",
     "redux": "^4.0.5",
     "redux-thunk": "^2.3.0",
     "serve": "^11.3.0",
@@ -27,10 +27,20 @@
     "now-start": "serve --single ./build",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "storybook": "start-storybook -p 9009 -s public",
+    "build-storybook": "build-storybook -s public"
   },
   "devDependencies": {
-    "redux-devtools": "^3.5.0"
+    "@storybook/addon-actions": "^5.3.17",
+    "@storybook/addon-docs": "^5.3.18",
+    "@storybook/addon-links": "^5.3.17",
+    "@storybook/addons": "^5.3.17",
+    "@storybook/preset-create-react-app": "^2.1.1",
+    "@storybook/react": "^5.3.17",
+    "react-docgen-typescript-loader": "^3.7.2",
+    "redux-devtools": "^3.5.0",
+    "ts-loader": "^6.2.2"
   },
   "browserslist": {
     "production": [
