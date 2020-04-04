@@ -15,7 +15,7 @@ interface Props {
 
 export const Item = (props: Props) => {
 
-  const { item, isFetching = true } = props;
+  const { item, isFetching } = props;
 
   const renderItem = (data: ItemModel) => {
     if (data && data.comments) {

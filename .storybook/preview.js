@@ -1,6 +1,15 @@
 
 import '../src/index.css';
-import { addDecorator } from '@storybook/react';
+import { addDecorator, addParameters } from '@storybook/react';
 import { withMemoryRouter } from './decorators/memoryRouter'
+import { withPlayroom } from 'storybook-addon-playroom';
 
-addDecorator(withMemoryRouter)
+addDecorator(withPlayroom);
+
+addDecorator(withMemoryRouter);
+
+addParameters({
+  playroom: {
+    url: process.env.NODE_ENV === 'production' ? '/playroom/' : undefined,
+  },
+});

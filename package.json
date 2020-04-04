@@ -28,8 +28,11 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "storybook": "start-storybook -p 9009 -s public",
-    "build-storybook": "build-storybook -s public"
+    "storybook:start": "start-storybook -p 9009 -s public",
+    "storybook": "concurrently \"yarn storybook:start\" \"yarn playroom\"",
+    "build-storybook": "build-storybook -s public",
+    "playroom": "playroom start",
+    "build-playroom": "playroom build"
   },
   "devDependencies": {
     "@storybook/addon-actions": "^5.3.17",
@@ -38,8 +41,11 @@
     "@storybook/addons": "^5.3.17",
     "@storybook/preset-create-react-app": "^2.1.1",
     "@storybook/react": "^5.3.17",
+    "concurrently": "^5.1.0",
+    "playroom": "^0.16.1",
     "react-docgen-typescript-loader": "^3.7.2",
     "redux-devtools": "^3.5.0",
+    "storybook-addon-playroom": "^1.0.0",
     "ts-loader": "^6.2.2"
   },
   "browserslist": {
