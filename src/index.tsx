@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import './styles.css';
 import * as serviceWorker from './serviceWorker';
 
 import { Provider } from 'react-redux';
@@ -27,18 +27,20 @@ const root: JSX.Element = (
       <div>
         <Navigation />
         <main>
-          <Switch>
-            <Route exact path="/" component={DefaultFeature} />
-            <Route path="/item/:id" component={ItemFeature} />
-            <Route path="/user/:id" component={UserFeature} />
-            <Route path="/news/:page?" render={props => <CollectionFeature {...props} type='news' />} />
-            <Route path="/newest/:page?" render={props => <CollectionFeature {...props} type='newest' />} />
-            <Route path="/show/:page?" render={props => <CollectionFeature {...props} type='show' />} />
-            <Route path="/ask/:page?" render={props => <CollectionFeature {...props} type='ask' />} />
-            <Route path="/jobs/:page?" render={props => <CollectionFeature {...props} type='jobs' />} />
-            <Route exact path="/about" component={About} />
-            <Route component={NoMatch} />
-          </Switch>
+          <div className="max-w-screen-lg my-4 mx-auto">
+            <Switch>
+              <Route exact path="/" component={DefaultFeature} />
+              <Route path="/item/:id" component={ItemFeature} />
+              <Route path="/user/:id" component={UserFeature} />
+              <Route path="/news/:page?" render={props => <CollectionFeature {...props} type='news' />} />
+              <Route path="/newest/:page?" render={props => <CollectionFeature {...props} type='newest' />} />
+              <Route path="/show/:page?" render={props => <CollectionFeature {...props} type='show' />} />
+              <Route path="/ask/:page?" render={props => <CollectionFeature {...props} type='ask' />} />
+              <Route path="/jobs/:page?" render={props => <CollectionFeature {...props} type='jobs' />} />
+              <Route exact path="/about" component={About} />
+              <Route component={NoMatch} />
+            </Switch>
+          </div>
         </main>
       </div>
     </Router>

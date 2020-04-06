@@ -9,7 +9,7 @@ export default {
 }
 
 export const commentData: CommentModel = {
-    level: 1,
+    level: 0,
     user: 'test',
     time_ago: '4 hours ago',
     content: '<p>I think this is great!</p>',
@@ -22,7 +22,7 @@ export const subCommentData = {
     ...commentData,
     comments: [
         {
-            level: 2,
+            level: 1,
             user: 'responder',
             time_ago: '2 minutes ago',
             content: '<p>I agree!</p>',
@@ -36,3 +36,12 @@ export const WithSubComments = () => (
         data={subCommentData}
     />
 )
+
+export const WithCodeBlock = () => (
+    <Comment
+        data={{
+            ...commentData,
+            content: '<p><pre><code>echo "Hello World!!1"</code></pre></p>'
+        }}
+    />
+);

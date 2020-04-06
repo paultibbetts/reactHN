@@ -9,12 +9,9 @@ interface ICommentsProps {
 export const Comments = (props: ICommentsProps): JSX.Element => {
   const { data: comments } = props;
   return (
-    <ul className="comments__list">
+    <ul>
       {comments.map((comment, index) => (
-        <li
-          key={index}
-          className="comments__listItem"
-        >
+        <li key={index}>
           <Comment data={comment} />
         </li>
       ))}

@@ -1,6 +1,6 @@
 import React from 'react';
 import { MemoryRouter } from 'react-router-dom';
-import '../src/index.css';
+import '../src/styles.css';
 
 export default (props) => {
     const { children } = props;

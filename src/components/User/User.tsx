@@ -40,15 +40,17 @@ export const User = (props: Props) => {
 
   const renderUser = (data: UserModel) => {
     return (
-      <div className="content">
-        <h1 className="single__title">{data.id}</h1>
-        <div>
-          <strong>Created:</strong>&nbsp;
-          {data.created}
-        </div>
-        <div>
-          <strong>Karma:</strong>&nbsp;
-          {data.karma} {renderRating(data.karma)}
+      <div className="bg-white p-4">
+        <h1 className="text-2xl font-bold mb-3">{data.id}</h1>
+        <div className="mb-3">
+          <div>
+            <span className="font-bold">Created:</span>&nbsp;
+            {data.created}
+          </div>
+          <div>
+            <span className="font-bold">Karma:</span>&nbsp;
+            {data.karma} {renderRating(data.karma)}
+          </div>
         </div>
         <div dangerouslySetInnerHTML={renderMarkup(data.about)} />
       </div>
@@ -56,7 +58,7 @@ export const User = (props: Props) => {
   }
 
   return (
-    <div className="container">
+    <div>
       {props.isFetching 
         ? <Loading /> 
         : renderUser(props.user)

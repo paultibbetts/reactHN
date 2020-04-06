@@ -31,13 +31,9 @@ export const Collection = (props: Props) => {
   const pageNumber: string = page.toString() || '1';
 
   const renderList = (data: StoryModel[], perPage: number) => {
-    let classNames = "collection content";
-    if (isFetching) {
-      classNames = `${classNames} is-fetching`;
-    }
     return (
-      <div className={classNames}>
-        <ol className="collection__list">
+      <div className="bg-white">
+        <ol>
           {renderStories(data, perPage)}
         </ol>
       </div>
@@ -68,17 +64,19 @@ export const Collection = (props: Props) => {
       return (
         <div>
           {renderList(content, content.length)}
-          <Pagination 
-            page={pageNumber ? pageNumber : '1'} 
-            type={type} 
-          />
+          <div className="my-4">
+            <Pagination 
+              page={pageNumber ? pageNumber : '1'} 
+              type={type}
+            />
+          </div>
         </div>
       );
     }
     else if (!isFetching && path) {
       const url = path.replace(':page?', (Number(pageNumber) - 1).toString());
       return (
-        <div className="container content">
+        <div className="p-4 bg-white">
           <p>There's nothing to show here…</p>
           <a href={url}>
             Try the previous page?
@@ -89,7 +87,7 @@ export const Collection = (props: Props) => {
   }
 
   return (
-    <div className="container">
+    <div>
       {renderContent(collection)}
     </div>
   );

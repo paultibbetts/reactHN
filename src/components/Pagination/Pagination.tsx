@@ -14,7 +14,7 @@ export const Pagination = (props: IPaginationProps): JSX.Element => {
   const total = 10; // max limit of hnapi
 
   return (
-    <div className="pagination content" style={{ lineHeight: "1" }}>
+    <div className="bg-white p-4 text-center" style={{ lineHeight: "1" }}>
       {page > 1 &&
         <Link
           to={prevUrl}

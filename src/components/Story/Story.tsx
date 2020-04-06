@@ -6,7 +6,7 @@ import { Story as StoryModel } from '../../services/node-hnapi';
 const StoryLink = (data: StoryModel) => (
   <a
     href={getLinkUrl(data)}
-    className="item__link break-words"
+    className="bg-blue-100 hover:bg-blue-150 rounded-sm p-1 -m-1 break-words visited:bg-white"
   >
     {data.title}
     &nbsp;
@@ -29,30 +29,53 @@ export const Story = (props: Props): JSX.Element => {
   const position = (index + 1) + (Number(page) - 1) * perPage;
 
   return (
-    <div className="story">
-      <div className="story__position center">
+    <div className="flex py-4 border-solid border-gray-100 border-b">
+      <div 
+        className="flex content-center items-center justify-center text-gray-600"
+        style={{ flexBasis: '4rem', flexShrink: 0 }}
+      >
         {position}
       </div>
-      <div className="story__content">
-        {StoryLink(data)}
-        <div className="story__details">
+      <div className="w-full">
+        <div className="mb-1">
+          {StoryLink(data)}
+        </div>
+        <div className="text-sm text-gray-700">
           {data.points && (
             <span>
               {data.points} points
-              by <Link to={`/user/${data.user}`}>{data.user}</Link>&nbsp;
+              by&nbsp;
+              <Link 
+                to={`/user/${data.user}`}
+                className="hover:text-gray-600"
+              >
+                {data.user}
+              </Link>&nbsp;
             </span>
           )}
-          <Link to={getPath(data)}>
-            {data.time_ago}
-          </Link>
-          {discussion(data) &&
-            <Fragment>
-              &nbsp;|&nbsp;
-              <Link to={getPath(data)}>
-                {discussion(data)}
-              </Link>
-            </Fragment>
-          }
+          <span className="md:inline-block">
+            <Link
+              to={getPath(data)}
+              className="hover:text-gray-600"
+            >
+              {data.time_ago}
+            </Link>
+          </span>
+            {discussion(data) &&
+              <Fragment>
+                <div className="hidden md:inline">
+                  &nbsp;|&nbsp;
+                </div>
+                <div className="md:inline-block">
+                  <Link
+                    to={getPath(data)}
+                    className="hover:text-gray-600"
+                  >
+                    {discussion(data)}
+                  </Link>
+                </div>
+              </Fragment>
+            }
         </div>
       </div>
     </div>

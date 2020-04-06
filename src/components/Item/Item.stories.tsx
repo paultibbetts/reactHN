@@ -12,7 +12,7 @@ export default {
 
 const itemData = {
     ...defaultStoryData,
-    content: '<p>Isolated components</p>',
+    content: '',
     comments: defaultCommentsData,
     comments_count: defaultCommentsData.length
 }
@@ -35,9 +35,13 @@ const noContentItemData = {
     ...itemData,
     content: ''
 }
-export const NoContent = () => (
+export const WithContent = () => (
     <Item
-        item={noContentItemData}
+        item={{
+            ...itemData,
+            title: 'Show HN: Storybook',
+            content: '<p>Some example content</p>'
+        }}
         isFetching={false}
     />
 )

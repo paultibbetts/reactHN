@@ -12,19 +12,22 @@ export const Comment = (props: ICommentProps): JSX.Element => {
   const { data: comment } = props;
   return (
     <div
-      className="comment"
-      style={{ marginLeft: `${comment.level * 1}rem` }}
+      style={{ paddingLeft: `${comment.level}rem` }}
     >
-      <div>
-        <Link
-          className="comment__author"
-          to={`/user/${comment.user}`}
-        >
-          {comment.user}
-        </Link> &nbsp;
-        <span className="comment__timeAgo">{comment.time_ago}</span>
+      <div className="mb-4">
+        <div className="text-gray-600 mb-2">
+          <Link
+            className="underline pb-4"
+            to={`/user/${comment.user}`}
+          >
+            {comment.user}
+          </Link> &nbsp;
+          <span>{comment.time_ago}</span>
+        </div>
+        <div
+          dangerouslySetInnerHTML={renderMarkup(comment.content)}
+        />
       </div>
-      <div dangerouslySetInnerHTML={renderMarkup(comment.content)} />
       {comment.comments.length > 0
         ? <Comments data={comment.comments} />
         : ''
