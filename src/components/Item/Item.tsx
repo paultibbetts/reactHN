@@ -35,7 +35,7 @@ export const Item = (props: Props) => {
               }
             </a>
           </h1>
-          <div className="text-gray-600 dark:text-gray-100">
+          <div className="text-gray-600 dark:text-gray-300">
             {data.points && (
               <Fragment>
                 {data.points} {data.points === 1 ? 'point ' : 'points '}

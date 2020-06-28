@@ -15,7 +15,7 @@ export const Comment = (props: ICommentProps): JSX.Element => {
       style={{ paddingLeft: `${comment.level / 2}rem` }}
     >
       <div className="mb-4">
-        <div className="text-gray-600 dark:text-gray-100 mb-2">
+        <div className="text-gray-600 dark:text-gray-300 mb-2">
           <Link
             className="underline pb-4"
             to={`/user/${comment.user}`}
