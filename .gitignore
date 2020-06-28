@@ -9,6 +9,12 @@
 # production
 /build
 
+# styles
+src/styles.css
+
+# storybook
+storybook-static
+
 # misc
 .DS_Store
 .env.local
