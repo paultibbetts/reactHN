@@ -30,7 +30,7 @@ export const Item = (props: Props) => {
               {data.domain &&
                 <Fragment>
                   &nbsp;
-                  <span className="text-base text-gray-600 dark:text-gray-400">({data.domain})</span>
+                  <span className="text-base">({data.domain})</span>
                 </Fragment>
               }
             </a>
