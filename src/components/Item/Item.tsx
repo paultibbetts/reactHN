@@ -20,7 +20,7 @@ export const Item = (props: Props) => {
   const renderItem = (data: ItemModel) => {
     if (data && data.comments) {
       return (
-        <div className="p-4 dark:p-1 bg-white dark:bg-gray-600">
+        <div className="p-4 dark:p-1 dark:px-2 bg-white dark:bg-gray-600">
           <h1 className="text-2xl font-bold mb-4">
             <a
               className="bg-blue-100 hover:bg-blue-150 rounded-sm p-1 -m-1 inline-block break-words visited:bg-white dark:text-gray-100 dark:hover:text-gray-700"
@@ -65,7 +65,7 @@ export const Item = (props: Props) => {
 
   const renderComments = (data: ItemModel) => {
     return (
-      <div className="my-4 px-2 bg-white dark:bg-gray-600">
+      <div className="my-4 py-2 px-4 dark:px-2 bg-white dark:bg-gray-600">
           <Comments data={data.comments} />
       </div>
     );
