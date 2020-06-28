@@ -8,7 +8,7 @@
 /build
 
 # styles
-src/styles.css # these are generated
+src/styles.css
 
 # storybook
 storybook-static
