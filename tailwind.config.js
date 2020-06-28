@@ -16,22 +16,28 @@ module.exports = {
         },
         gray: {
           '100': '#f7f7f7',
-          '400': 'rgb(247, 247, 247)',
-          '500': '#ececec',
-          '600': 'rgb(130, 130, 130)',
+          '300': 'rgb(247, 247, 247)',
+          '400': '#ececec',
+          '500': 'rgb(130, 130, 130)',
+          '600': '#282c34',
           '700': '#20232a'
         }
+      },
+      screens: {
+        dark: { raw: '(prefers-color-scheme: dark)' }
       }
     },
     screens: {
       'sm': '320px',
       'md': '640px',
-      'lg': '720px'
+      'lg': '720px',
     }
   },
   variants: {
-    backgroundColor: ['visited', 'hover'],
-    margin: ['first', 'last']
+    backgroundColor: ['responsive', 'visited', 'hover'],
+    margin: ['first', 'last'],
+    textColor: ['responsive', 'hover',],
+    textDecoration: ['responsive', 'hover'],
   },
   plugins: [],
 }

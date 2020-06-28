@@ -2,7 +2,14 @@ import { CollectionType } from '../features/collection/collectionSlice';
 
 const API_URL = 'https://node-hnapi.herokuapp.com/';
 
-export interface Story {
+export interface Urlable {
+    id: number,
+    user: string,
+    time: number,
+    time_ago: string,
+}
+
+export interface Story extends Urlable {
     id: number
     title: string,
     domain: string,
@@ -22,7 +29,7 @@ export interface Item extends Story {
     content: string,
 }
 
-export interface Comment {
+export interface Comment extends Urlable {
     level: number,
     user: string,
     time_ago: string

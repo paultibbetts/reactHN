@@ -32,7 +32,7 @@ export const Collection = (props: Props) => {
 
   const renderList = (data: StoryModel[], perPage: number) => {
     return (
-      <div className="bg-white">
+      <div>
         <ol>
           {renderStories(data, perPage)}
         </ol>
@@ -76,7 +76,7 @@ export const Collection = (props: Props) => {
     else if (!isFetching && path) {
       const url = path.replace(':page?', (Number(pageNumber) - 1).toString());
       return (
-        <div className="p-4 bg-white">
+        <div className="p-4 bg-white dark:bg-gray-500">
           <p>There's nothing to show here…</p>
           <a href={url}>
             Try the previous page?

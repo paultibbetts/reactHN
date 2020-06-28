@@ -9,8 +9,10 @@ export default {
 }
 
 export const commentData: CommentModel = {
+    id: 1,
     level: 0,
     user: 'test',
+    time: 123,
     time_ago: '4 hours ago',
     content: '<p>I think this is great!</p>',
     comments: []
@@ -22,8 +24,10 @@ export const subCommentData = {
     ...commentData,
     comments: [
         {
+            id: 2,
             level: 1,
             user: 'responder',
+            time: 456,
             time_ago: '2 minutes ago',
             content: '<p>I agree!</p>',
             comments: []

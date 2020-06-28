@@ -6,8 +6,20 @@ html {
     font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
+@media (prefers-color-scheme: dark) {
+    html {
+        @apply bg-gray-600;
+    }
+}
+
 p {
     @apply mb-4;
+}
+
+@media (prefers-color-scheme: dark) {
+    p {
+        @apply text-gray-100;
+    }
 }
 
 p:first-child:last-child {
@@ -28,10 +40,21 @@ p a {
 
 p a:hover {
     @apply bg-blue-150;
+    @apply text-gray-700;
 }
 
 p a:visited {
     @apply bg-white;
+}
+
+@media (prefers-color-scheme: dark) {
+    p a:visited {
+        @apply bg-black-700;
+    }
+
+    p a:visited:hover {
+        @apply text-white;
+    }
 }
 
 pre code {
@@ -51,4 +74,8 @@ pre code {
 [class="<3"] {
     background: none !important;
     border-bottom: none !important;
+}
+
+body {
+    overflow-y: scroll;
 }

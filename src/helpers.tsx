@@ -1,6 +1,6 @@
 import dompurify from 'dompurify';
 import anchorme from 'anchorme';
-import { Story } from './services/node-hnapi';
+import { Story, Urlable } from './services/node-hnapi';
 
 export const renderMarkup = (markup: string): { __html: string } => {
   const sanitized = dompurify.sanitize(markup);
@@ -27,7 +27,7 @@ export const discussion = (data: Story): string => {
   return 'discuss';
 }
 
-export const getPath = (data: Story): string => `/item/${data.id}`;
+export const getPath = (data: Urlable): string => `/item/${data.id}`;
 
 const isValidUrl = (string: string): boolean => {
   try {

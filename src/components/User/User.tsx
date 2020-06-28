@@ -40,9 +40,9 @@ export const User = (props: Props) => {
 
   const renderUser = (data: UserModel) => {
     return (
-      <div className="bg-white p-4">
-        <h1 className="text-2xl font-bold mb-3">{data.id}</h1>
-        <div className="mb-3">
+      <div className="bg-white dark:bg-gray-600 p-1">
+        <h1 className="text-2xl font-bold mb-3 text-gray-600 dark:text-white">{data.id}</h1>
+        <div className="mb-3 text-gray-600 dark:text-white">
           <div>
             <span className="font-bold">Created:</span>&nbsp;
             {data.created}
@@ -52,7 +52,7 @@ export const User = (props: Props) => {
             {data.karma} {renderRating(data.karma)}
           </div>
         </div>
-        <div dangerouslySetInnerHTML={renderMarkup(data.about)} />
+        <div className="text-gray-600 dark:text-white" dangerouslySetInnerHTML={renderMarkup(data.about)} />
       </div>
     );
   }
