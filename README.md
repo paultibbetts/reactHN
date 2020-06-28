@@ -2,7 +2,7 @@
 
 Yet another React Hacker News clone
 
-**Demo:** [https://ya-react-hn.now.sh](https://ya-react-hn.now.sh)
+**Demo:** [https://ya-react-hn.vercel.app/1](https://ya-react-hn.vercel.app/1)
 
 Featuring:
 
