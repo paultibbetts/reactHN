@@ -50,11 +50,7 @@ export const Item = (props: Props) => {
             }
           </div>
           <div
-<<<<<<< HEAD
-            className="item__content"
-=======
             className="mt-3"
->>>>>>> feat/dark-mode
             dangerouslySetInnerHTML={renderMarkup(data.content)}
           />
         </div>

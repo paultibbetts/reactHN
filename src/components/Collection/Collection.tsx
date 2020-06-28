@@ -31,19 +31,9 @@ export const Collection = (props: Props) => {
   const pageNumber: string = page.toString() || '1';
 
   const renderList = (data: StoryModel[], perPage: number) => {
-<<<<<<< HEAD
-    let classNames = "collection content";
-    if (isFetching) {
-      classNames = `${classNames} is-fetching`;
-    }
-    return (
-      <div className={classNames}>
-        <ol className="collection__list">
-=======
     return (
       <div>
         <ol>
->>>>>>> feat/dark-mode
           {renderStories(data, perPage)}
         </ol>
       </div>
@@ -74,19 +64,12 @@ export const Collection = (props: Props) => {
       return (
         <div>
           {renderList(content, content.length)}
-<<<<<<< HEAD
-          <Pagination 
-            page={pageNumber ? pageNumber : '1'} 
-            type={type} 
-          />
-=======
           <div className="my-4">
             <Pagination 
               page={pageNumber ? pageNumber : '1'} 
               type={type}
             />
           </div>
->>>>>>> feat/dark-mode
         </div>
       );
     }
@@ -104,11 +87,7 @@ export const Collection = (props: Props) => {
   }
 
   return (
-<<<<<<< HEAD
-    <div className="container">
-=======
     <div>
->>>>>>> feat/dark-mode
       {renderContent(collection)}
     </div>
   );
