@@ -78,7 +78,7 @@ export const Collection = (props: Props) => {
     else if (!isFetching && path) {
       const url = path.replace(':page?', (Number(pageNumber) - 1).toString());
       return (
-        <div className="container content">
+        <div className="p-4 bg-white dark:bg-gray-500">
           <p>There's nothing to show here…</p>
           <a href={url}>
             Try the previous page?

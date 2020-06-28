@@ -20,26 +20,26 @@ export const Item = (props: Props) => {
   const renderItem = (data: ItemModel) => {
     if (data && data.comments) {
       return (
-        <div className="item container content">
-          <h1 className="item__title">
+        <div className="p-4 dark:p-0 bg-white dark:bg-gray-600">
+          <h1 className="text-2xl font-bold mb-4">
             <a
-              className="item__link"
+              className="bg-blue-100 hover:bg-blue-150 rounded-sm p-1 -m-1 inline-block break-words visited:bg-white dark:text-gray-100 dark:hover:text-gray-700"
               href={getLinkUrl(data)}
             >
               {data.title}
               {data.domain &&
                 <Fragment>
                   &nbsp;
-                  <span className="single__domain">({data.domain})</span>
+                  <span className="text-base text-gray-600 dark:text-gray-400">({data.domain})</span>
                 </Fragment>
               }
             </a>
           </h1>
-          <div className="item__meta">
+          <div className="text-gray-600 dark:text-gray-100">
             {data.points && (
               <Fragment>
                 {data.points} {data.points === 1 ? 'point ' : 'points '}
-                by <Link to={`/user/${data.user}`}>{data.user}</Link>
+                by <Link className="dark:underline" to={`/user/${data.user}`}>{data.user}</Link>
               </Fragment>
             )}
             {discussion(data) &&
@@ -65,8 +65,8 @@ export const Item = (props: Props) => {
 
   const renderComments = (data: ItemModel) => {
     return (
-      <div className="container content">
-        <Comments data={data.comments} />
+      <div className="my-4 p-4 dark:px-0 bg-white dark:bg-gray-600">
+          <Comments data={data.comments} />
       </div>
     );
   }
