@@ -12,8 +12,7 @@ export const Comment = (props: ICommentProps): JSX.Element => {
   const { data: comment } = props;
   return (
     <div
-      className="comment"
-      style={{ marginLeft: `${comment.level * 1}rem` }}
+      style={{ paddingLeft: `${comment.level / 2}rem` }}
     >
       <div className="mb-4">
         <div className="text-gray-600 dark:text-gray-100 mb-2">
