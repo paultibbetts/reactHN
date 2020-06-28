@@ -40,4 +40,8 @@ module.exports = {
     textDecoration: ['responsive', 'hover'],
   },
   plugins: [],
+  purge: [
+    './src/**/*.tsx',
+    './src/**/*.ts'
+  ],
 }
