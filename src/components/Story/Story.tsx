@@ -40,7 +40,7 @@ export const Story = (props: Props): JSX.Element => {
         <div className="mb-1">
           {StoryLink(data)}
         </div>
-        <div className="pl-1 text-sm text-gray-700 dark:text-gray-100">
+        <div className="pl-1 text-sm text-gray-700 dark:text-gray-300">
           {data.points && (
             <span>
               {data.points} points
