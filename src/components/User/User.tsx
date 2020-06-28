@@ -58,7 +58,7 @@ export const User = (props: Props) => {
   }
 
   return (
-    <div className="container">
+    <div>
       {props.isFetching 
         ? <Loading /> 
         : renderUser(props.user)

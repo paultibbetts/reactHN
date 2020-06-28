@@ -50,7 +50,11 @@ export const Item = (props: Props) => {
             }
           </div>
           <div
+<<<<<<< HEAD
             className="item__content"
+=======
+            className="mt-3"
+>>>>>>> feat/dark-mode
             dangerouslySetInnerHTML={renderMarkup(data.content)}
           />
         </div>
@@ -73,7 +77,7 @@ export const Item = (props: Props) => {
 
   const renderContents = (data: ItemModel) => {
     return (
-      <div className={isFetching ? 'is-fetching' : ''}>
+      <div className={isFetching ? 'opacity-25' : ''}>
         { renderItem(data) }
         {
           data.comments && data.comments.length > 0
@@ -85,7 +89,7 @@ export const Item = (props: Props) => {
   }
 
   return (
-    <div className="container">
+    <div>
       {renderContents(item)}
     </div>
   );

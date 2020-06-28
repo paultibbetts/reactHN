@@ -25,3 +25,13 @@ export const Default = () => (
         page={1}
     />
 )
+
+export const IsFetching = () => (
+    <Collection
+        type='news'
+        collection={collectionData}
+        isFetching={true}
+        path=":page?"
+        page={1}
+    />
+)

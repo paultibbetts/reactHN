@@ -33,7 +33,10 @@ export const Comment = (props: ICommentProps): JSX.Element => {
           dangerouslySetInnerHTML={renderMarkup(comment.content)}
         />
       </div>
+<<<<<<< HEAD
       <div dangerouslySetInnerHTML={renderMarkup(comment.content)} />
+=======
+>>>>>>> feat/dark-mode
       {comment.comments.length > 0
         ? <Comments data={comment.comments} />
         : ''

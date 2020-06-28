@@ -25,31 +25,31 @@ const links: { dest: string, label: string }[] = [
   }
 ];
 
-const className = "navigation__link";
-const activeClassName = `${className}--active`;
+const navLinkClass = 'inline-block text-white p-2 hover:text-blue-500 border-transparent border-b-2';
+const navLinkActiveClass = 'border-blue-500 text-blue-500';
 
 export const Navigation: React.FC = () => (
   <nav
-    className="navigation"
+    className="sticky top-0 bg-black-600"
     onClick={() => scrollToTop()}
   >
-    <div className="container">
-      <ul className="navigation__list">
+    <div className="max-w-screen-lg mx-auto">
+      <ul className="flex items-center">
         {links.map((link, index) => (
-          <li className="navigation__listItem" key={index}>
+          <li key={index}>
             <NavLink
               to={link.dest}
-              className={className}
-              activeClassName={activeClassName}
+              className={navLinkClass}
+              activeClassName={navLinkActiveClass}
             >
               {link.label}
             </NavLink>
           </li>
         ))}
-        <li className="navigation__listItem navigation__listItem--about">
+        <li className="ml-auto">
           <NavLink to="/about"
-            className={className}
-            activeClassName={activeClassName}
+            className={navLinkClass}
+            activeClassName={navLinkActiveClass}
           >
             about
           </NavLink>

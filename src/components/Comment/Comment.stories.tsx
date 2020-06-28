@@ -40,3 +40,12 @@ export const WithSubComments = () => (
         data={subCommentData}
     />
 )
+
+export const WithCodeBlock = () => (
+    <Comment
+        data={{
+            ...commentData,
+            content: '<p><pre><code>echo "Hello World!!1"</code></pre></p>'
+        }}
+    />
+);

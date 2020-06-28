@@ -5,6 +5,7 @@ module.exports = {
     '@storybook/addon-actions',
     '@storybook/addon-links',
     '@storybook/addon-docs',
+    '@storybook/addon-viewport/register',
     'storybook-addon-playroom',
   ],
 };
