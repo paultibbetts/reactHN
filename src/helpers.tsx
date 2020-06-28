@@ -1,8 +1,6 @@
-import React from 'react';
 import dompurify from 'dompurify';
 import anchorme from 'anchorme';
-import { ItemModel as Item } from './models/Item';
-import CSS from 'csstype';
+import { Story } from './services/node-hnapi';
 
 export const renderMarkup = (markup: string): { __html: string } => {
   const sanitized = dompurify.sanitize(markup);
@@ -21,21 +19,15 @@ export const scrollToTop = (): void => {
   window.scrollTo(0, 0);
 }
 
-export const renderLoading = (): JSX.Element => {
-  const styles: CSS.Properties = {
-    position: "fixed",
-    top: "50%",
-    left: "50%",
-    fontSize: "2rem"
-  };
-  return (
-    <div style={styles}>
-      <span role="img" aria-label="loading…">🙈</span>
-    </div>
-  );
+export const discussion = (data: Story): string => {
+  if (data.type === 'job') return '';
+  if (data.comments_count > 0) {
+    return `${data.comments_count} comments`;
+  }
+  return 'discuss';
 }
 
-export const getPath = (data: Item): string => `/item/${data.id}`;
+export const getPath = (data: Story): string => `/item/${data.id}`;
 
 const isValidUrl = (string: string): boolean => {
   try {
@@ -46,7 +38,7 @@ const isValidUrl = (string: string): boolean => {
   }
 }
 
-export const getLinkUrl = (data: Item): string =>
+export const getLinkUrl = (data: Story): string =>
   isValidUrl(data.url) ?
     data.url :
     getPath(data)
