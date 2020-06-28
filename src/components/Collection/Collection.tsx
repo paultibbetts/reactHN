@@ -23,7 +23,7 @@ export const Collection = (props: Props) => {
   const {
     type,
     collection,
-    isFetching = true,
+    isFetching,
     path,
     page = '1',
   } = props;
