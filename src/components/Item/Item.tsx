@@ -23,10 +23,12 @@ export const Item = (props: Props) => {
         <div className="p-4 dark:p-1 dark:px-2 bg-white dark:bg-gray-600">
           <h1 className="text-2xl font-bold mb-4">
             <a
-              className="bg-blue-100 hover:bg-blue-150 rounded-sm p-1 -m-1 inline-block break-words visited:bg-white dark:text-gray-100 dark:hover:text-gray-700"
+              className="bg-blue-100 hover:bg-blue-150 rounded-sm p-1 -m-1 inline-flex items-center flex-wrap break-all sm:break-normal visited:bg-white dark:text-gray-100 dark:hover:text-gray-700"
               href={getLinkUrl(data)}
             >
-              {data.title}
+              <span>
+                {data.title}
+              </span>
               {data.domain &&
                 <Fragment>
                   &nbsp;
@@ -37,17 +39,18 @@ export const Item = (props: Props) => {
           </h1>
           <div className="text-gray-600 dark:text-gray-300">
             {data.points && (
-              <Fragment>
-                {data.points} {data.points === 1 ? 'point ' : 'points '}
-                by <Link className="dark:underline" to={`/user/${data.user}`}>{data.user}</Link>
-              </Fragment>
+              <span>
+                <span className="break-all sm:break-normal">
+                  {data.points} {data.points === 1 ? 'point ' : 'points '}
+                  <span>by</span> <Link className="dark:underline" to={`/user/${data.user}`}>{data.user}</Link>
+                  {discussion(data) &&
+                    <span className="inline-block">
+                      &nbsp;{discussion(data)}
+                    </span>
+                  }
+                </span>
+              </span>
             )}
-            {discussion(data) &&
-              <Fragment>
-                &nbsp;|&nbsp;
-                {discussion(data)}
-              </Fragment>
-            }
           </div>
           <div
             className="mt-3"
@@ -65,7 +68,7 @@ export const Item = (props: Props) => {
 
   const renderComments = (data: ItemModel) => {
     return (
-      <div className="my-4 py-2 px-4 dark:px-2 bg-white dark:bg-gray-600">
+      <div className="my-4 py-2 px-4 dark:px-2 bg-white dark:bg-gray-600 overflow-x-auto">
           <Comments data={data.comments} />
       </div>
     );

@@ -30,11 +30,11 @@ const navLinkActiveClass = 'border-blue-500 text-blue-500';
 
 export const Navigation: React.FC = () => (
   <nav
-    className="sticky top-0 bg-black-600"
+    className="sm:sticky top-0 bg-black-600"
     onClick={() => scrollToTop()}
   >
     <div className="max-w-screen-lg mx-auto">
-      <ul className="flex items-center">
+      <ul className="flex flex-col sm:flex-row items-center flex-wrap">
         {links.map((link, index) => (
           <li key={index}>
             <NavLink
@@ -46,7 +46,7 @@ export const Navigation: React.FC = () => (
             </NavLink>
           </li>
         ))}
-        <li className="ml-auto">
+        <li className="sm:ml-auto">
           <NavLink to="/about"
             className={navLinkClass}
             activeClassName={navLinkActiveClass}

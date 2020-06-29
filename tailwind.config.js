@@ -36,7 +36,8 @@ module.exports = {
   },
   variants: {
     backgroundColor: ['responsive', 'visited', 'hover'],
-    margin: ['first', 'last'],
+    margin: ['first', 'last', 'responsive'],
+    overflow: ['responsive'],
     textColor: ['responsive', 'hover',],
     textDecoration: ['responsive', 'hover'],
   },

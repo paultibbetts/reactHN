@@ -12,12 +12,15 @@ export const Comment = (props: ICommentProps): JSX.Element => {
   const { data: comment } = props;
   return (
     <div
-      style={{ paddingLeft: `${comment.level / 2}rem` }}
+      style={{
+        minWidth: '15rem',
+        paddingLeft: comment.level < 50 ? `${comment.level / 2}rem` : 0
+      }}
     >
       <div className="mb-4">
-        <div className="text-gray-600 dark:text-gray-300 mb-2">
+        <div className="text-gray-600 dark:text-gray-300 mb-2 flex flex-wrap">
           <Link
-            className="underline pb-4"
+            className="underline pb-4 break-all sm:break-normal"
             to={`/user/${comment.user}`}
           >
             {comment.user}
@@ -26,10 +29,11 @@ export const Comment = (props: ICommentProps): JSX.Element => {
             className="hover:underline pb-4"
             to={getPath(comment)}
           >
-            <span className="whitespace-no-wrap">{comment.time_ago}</span>
+            <span className="">{comment.time_ago}</span>
           </Link>
         </div>
         <div
+          className="overflow-x-auto"
           dangerouslySetInnerHTML={renderMarkup(comment.content)}
         />
       </div>
