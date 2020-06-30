@@ -18,7 +18,6 @@ export const Pagination = (props: IPaginationProps): JSX.Element => {
       className="bg-white dark:bg-gray-600 p-3 flex text-center dark:text-white"
       style={{
         lineHeight: "1",
-        maxWidth: "30rem"
       }}
     >
       <Link
