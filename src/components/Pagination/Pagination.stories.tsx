@@ -7,19 +7,23 @@ export default {
     excludeStories: /.*Data$/,
 }
 
-export const defaultPaginationData = {
-    page: '1',
-    type: 'test'
-};
-
 export const Start = () => (
-    <Pagination {...defaultPaginationData} />
+    <Pagination
+        page={'1'}
+        type="test"
+    />
 );
 
 export const Middle = () => (
-    <Pagination {...defaultPaginationData} page={'5'} />
+    <Pagination
+        page={'5'}
+        type="test"
+    />
 );
 
 export const End = () => (
-    <Pagination {...defaultPaginationData} page={'10'} />
+    <Pagination
+        page={'10'}
+        type="test"
+    />
 );
