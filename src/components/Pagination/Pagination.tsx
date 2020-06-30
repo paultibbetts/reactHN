@@ -15,28 +15,27 @@ export const Pagination = (props: IPaginationProps): JSX.Element => {
 
   return (
     <div
-      className="bg-white dark:bg-gray-600 p-4 text-center dark:text-white"
-      style={{ lineHeight: "1" }}
+      className="bg-white dark:bg-gray-600 p-3 flex text-center dark:text-white"
+      style={{
+        lineHeight: "1",
+        maxWidth: "30rem"
+      }}
     >
-      {page > 1 &&
-        <Link
-          to={prevUrl}
-          onClick={() => scrollToTop()}
-          style={{ marginRight: "0.5rem" }}
-        >
-          prev
-        </Link>
-      }
-      <span>&nbsp;{page || 1} / {total}&nbsp;</span>
-      {page !== total &&
+      <Link
+        to={prevUrl}
+        onClick={() => scrollToTop()}
+        className="flex-1 inline-block text-white p-3 hover:text-blue-500 border-transparent border-b-2"
+      >
+        {page > 1 ? 'prev' : '' }
+      </Link>
+      <span className="p-3 flex-1">&nbsp;{page || 1} / {total}&nbsp;</span>
         <Link
           to={nextUrl}
           onClick={() => scrollToTop()}
-          style={{ marginLeft: "0.5rem" }}
+          className="flex-1 inline-block text-white p-3 hover:text-blue-500 border-transparent border-b-2"
         >
-          more
+          {page !== total ? 'more' : '' }
         </Link>
-      }
     </div>
   );
 }

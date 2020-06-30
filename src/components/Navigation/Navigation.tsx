@@ -25,7 +25,7 @@ const links: { dest: string, label: string }[] = [
   }
 ];
 
-const navLinkClass = 'inline-block text-white p-2 hover:text-blue-500 border-transparent border-b-2';
+const navLinkClass = 'inline-block text-white p-3 hover:text-blue-500 border-transparent border-b-2';
 const navLinkActiveClass = 'border-blue-500 text-blue-500';
 
 export const Navigation: React.FC = () => (
