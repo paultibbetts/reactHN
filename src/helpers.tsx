@@ -22,7 +22,7 @@ export const scrollToTop = (): void => {
 export const discussion = (data: Story): string => {
   if (data.type === 'job') return '';
   if (data.comments_count > 0) {
-    return `${data.comments_count} comments`;
+    return `${data.comments_count} ${data.comments_count === 1 ? 'point ' : 'points '}`;
   }
   return 'discuss';
 }
