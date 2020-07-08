@@ -23,7 +23,7 @@ export const Pagination = (props: IPaginationProps): JSX.Element => {
       <Link
         to={prevUrl}
         onClick={() => scrollToTop()}
-        className="flex-1 inline-block text-white p-3 hover:text-blue-500 border-transparent border-b-2"
+        className="flex-1 inline-block text-gray-600 dark:text-white p-3 hover:text-blue-500 border-transparent border-b-2"
       >
         {page > 1 ? 'prev' : '' }
       </Link>
@@ -31,7 +31,7 @@ export const Pagination = (props: IPaginationProps): JSX.Element => {
         <Link
           to={nextUrl}
           onClick={() => scrollToTop()}
-          className="flex-1 inline-block text-white p-3 hover:text-blue-500 border-transparent border-b-2"
+          className="flex-1 inline-block text-gray-600 dark:text-white p-3 hover:text-blue-500 border-transparent border-b-2"
         >
           {page !== total ? 'more' : '' }
         </Link>
