@@ -33,7 +33,7 @@ export const Comment = (props: ICommentProps): JSX.Element => {
           </Link>
         </div>
         <div
-          className="overflow-x-auto"
+          className="overflow-x-auto text-gray-600 dark:text-gray-300"
           dangerouslySetInnerHTML={renderMarkup(comment.content)}
         />
       </div>
