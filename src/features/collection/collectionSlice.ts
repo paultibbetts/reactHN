@@ -32,7 +32,7 @@ const collectionsSlice = createSlice({
         requestList: state => {
             state.isFetching = true;
         },
-        receiveList: (state, action: PayloadAction<{type: CollectionType, data: Collection}>) => {
+        receiveList: (state, action: PayloadAction<{type: CollectionType, data: CollectionModel}>) => {
             const { type, data } = action.payload;
             state.isFetching = false;
             state[type] = data;
