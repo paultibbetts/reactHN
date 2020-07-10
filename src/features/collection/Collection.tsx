@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { Redirect, useParams } from 'react-router-dom';
+import { RootState } from '../../store';
 import { getCollection, CollectionType } from './collectionSlice';
 import { scrollToTop, setTitle } from '../../helpers';
 import Collection from '../../components/Collection';
-import { RootState } from '../../store';
-import { useSelector, useDispatch } from 'react-redux';
-import { Redirect, useParams } from 'react-router-dom';
 
 export interface Props {
     type: CollectionType
