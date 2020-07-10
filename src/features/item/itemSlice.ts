@@ -1,7 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { AppThunk } from '../../store';
-import { api } from '../../services/node-hnapi';
-import { Item as ItemModel } from '../../services/node-hnapi';
+import { Item as ItemModel, api } from '../../services/node-hnapi';
 
 export interface Items {
     item: ItemModel
