@@ -2,6 +2,8 @@
 
 Yet another React Hacker News clone
 
+[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
+
 **Demo:** [https://ya-react-hn.vercel.app](https://ya-react-hn.vercel.app)
 
 Featuring:
