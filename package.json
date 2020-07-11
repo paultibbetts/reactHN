@@ -37,7 +37,8 @@
     "storybook": "concurrently \"yarn storybook:start\" \"yarn playroom\"",
     "storybook:build": "build-storybook -s public",
     "playroom": "playroom start",
-    "playroom:build": "playroom build"
+    "playroom:build": "playroom build",
+    "commit": "git-cz"
   },
   "devDependencies": {
     "@fullhuman/postcss-purgecss": "^2.1.0",
@@ -51,7 +52,10 @@
     "@storybook/preset-create-react-app": "^2.1.1",
     "@storybook/react": "^5.3.17",
     "autoprefixer": "^9.7.5",
+    "commitizen": "^4.1.2",
     "concurrently": "^5.1.0",
+    "cz-conventional-changelog": "3.2.0",
+    "husky": "^4.2.5",
     "playroom": "^0.21.2",
     "postcss-cli": "^7.1.0",
     "raw.macro": "^0.3.1",
@@ -75,5 +79,15 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "husky": {
+    "hooks": {
+      "prepare-commit-msg": "exec < /dev/tty && git cz --hook || true"
+    }
   }
 }
