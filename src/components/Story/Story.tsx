@@ -44,7 +44,7 @@ export const Story = (props: Props): JSX.Element => {
         <div className="pl-1 text-sm text-gray-700 dark:text-gray-300">
           {data.points && (
             <span>
-              {data.points} points
+              {data.points} {data.points === 1 ? 'point ' : 'points '}
               by&nbsp;
               <Link 
                 to={`/user/${data.user}`}
