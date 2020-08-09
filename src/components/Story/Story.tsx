@@ -27,6 +27,7 @@ export const Story = (props: Props): JSX.Element => {
   const { data, index, page } = props;
   const perPage = props.perPage || 30;
   const position = (index + 1) + (Number(page) - 1) * perPage;
+  const discussionLabel = discussion(data);
 
   return (
     <div className="flex py-4 border-solid border-gray-100 dark:border-b-0 border-b">
@@ -61,7 +62,7 @@ export const Story = (props: Props): JSX.Element => {
               {data.time_ago}
             </Link>
           </span>
-            {discussion(data) &&
+            {discussionLabel &&
               <Fragment>
                 <div className="hidden md:inline">
                   &nbsp;|&nbsp;
@@ -71,7 +72,7 @@ export const Story = (props: Props): JSX.Element => {
                     to={getPath(data)}
                     className="hover:underline"
                   >
-                    {discussion(data)}
+                    {discussionLabel}
                   </Link>
                 </div>
               </Fragment>
