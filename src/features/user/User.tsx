@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
-import { RootState } from '../../store';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
+import { RootState } from '../../store';
 import { getUser } from '../../features/user/userSlice';
 import User from '../../components/User';
 
