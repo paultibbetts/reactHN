@@ -53,7 +53,7 @@ export const Item = (props: Props) => {
             )}
           </div>
           <div
-            className="mt-3"
+            className="mt-3 prose"
             dangerouslySetInnerHTML={renderMarkup(data.content)}
           />
         </div>

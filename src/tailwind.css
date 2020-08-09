@@ -26,27 +26,6 @@ p:first-child:last-child {
     @apply mb-0;
 }
 
-code a {
-    @apply text-hacker;
-    @apply underline;
-}
-
-p a {
-    @apply bg-blue-100;
-    @apply border-b;
-    @apply border-gray-700;
-    @apply break-words;
-}
-
-p a:hover {
-    @apply bg-blue-150;
-    @apply text-gray-700;
-}
-
-p a:visited {
-    @apply bg-white;
-}
-
 @media (prefers-color-scheme: dark) {
     p a:visited {
         @apply bg-black-700;
@@ -55,15 +34,6 @@ p a:visited {
     p a:visited:hover {
         @apply text-white;
     }
-}
-
-pre code {
-    @apply bg-gray-700;
-    @apply block;
-    @apply p-2;
-    @apply rounded;
-    @apply text-hacker;
-    @apply overflow-auto;
 }
 
 @tailwind  components;

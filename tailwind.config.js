@@ -32,6 +32,42 @@ module.exports = {
       'sm': '340px',
       'md': '640px',
       'lg': '720px',
+    },
+    typography: {
+      default: {
+        css: {
+          a: {
+            color: 'inherit',
+            '&:hover': {
+              color: '#20232a'
+            }
+          },
+          pre: {
+            'background-color': '#20232a',
+            color: '#1ec503',
+            code: {
+              a: {
+                color: '#1ec503',
+                'text-decoration': 'underline'
+              }
+            },
+          },
+          p: {
+            a: {
+              'background-color': 'rgba(187,239,253,0.3)',
+              'border-bottom': '1px',
+              'border-color': '#20232a',
+              '&:hover': {
+                'background-color': '#bbeffd',
+                color: '#20232a'
+              },
+              '&:visited': {
+                'background-color': '#ffffff'
+              }
+            }
+          }
+        }
+      }
     }
   },
   variants: {
@@ -41,7 +77,9 @@ module.exports = {
     textColor: ['responsive', 'hover',],
     textDecoration: ['responsive', 'hover'],
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/typography'),
+  ],
   purge: [
     './src/**/*.tsx',
     './src/**/*.ts'
