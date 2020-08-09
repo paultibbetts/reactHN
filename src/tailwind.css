@@ -49,3 +49,29 @@ p:first-child:last-child {
 body {
     overflow-y: scroll;
 }
+
+.About {
+    @apply text-gray-700 bg-gray-100 p-4 rounded;
+}
+
+.About h1 {
+    @apply text-xl mb-2;
+}
+
+.About h2 {
+    @apply text-lg mb-1;
+}
+
+.About a {
+    @apply underline;
+}
+
+.About ul {
+    @apply pl-4 mb-4;
+}
+
+@media (prefers-color-scheme: dark) {
+    .About {
+        @apply text-gray-100 bg-gray-600;
+    }
+}
