@@ -1,7 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { User as UserModel } from '../../services/node-hnapi';
 import { AppThunk } from '../../store';
-import { api } from '../../services/node-hnapi';
+import { User as UserModel, api } from '../../services/node-hnapi';
 
 export interface User {
     user: UserModel
