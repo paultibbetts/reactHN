@@ -1,14 +1,13 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { AppThunk } from '../../store';
-import { api } from '../../services/node-hnapi';
-import { Collection } from '../../services/node-hnapi';
+import { Collection as CollectionModel, api } from '../../services/node-hnapi';
 
 export interface Collections {
-    news: Collection,
-    newest: Collection,
-    show: Collection,
-    ask: Collection,
-    jobs: Collection,
+    news: CollectionModel,
+    newest: CollectionModel,
+    show: CollectionModel,
+    ask: CollectionModel,
+    jobs: CollectionModel,
 }
   
 export type CollectionType = keyof Collections;
@@ -33,7 +32,7 @@ const collectionsSlice = createSlice({
         requestList: state => {
             state.isFetching = true;
         },
-        receiveList: (state, action: PayloadAction<{type: CollectionType, data: Collection}>) => {
+        receiveList: (state, action: PayloadAction<{type: CollectionType, data: CollectionModel}>) => {
             const { type, data } = action.payload;
             state.isFetching = false;
             state[type] = data;

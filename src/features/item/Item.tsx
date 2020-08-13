@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
-import { RootState } from '../../store';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import Item from '../../components/Item';
+import { RootState } from '../../store';
 import { getItem } from '../../features/item/itemSlice';
+import Item from '../../components/Item';
 
 import {
     scrollToTop,

@@ -16,6 +16,7 @@ interface Props {
 export const Item = (props: Props) => {
 
   const { item, isFetching } = props;
+  const discussionLabel = discussion(item);
 
   const renderItem = (data: ItemModel) => {
     if (data && data.comments) {
@@ -43,9 +44,9 @@ export const Item = (props: Props) => {
                 <span className="break-all sm:break-normal">
                   {data.points} {data.points === 1 ? 'point ' : 'points '}
                   <span>by</span> <Link className="dark:underline" to={`/user/${data.user}`}>{data.user}</Link>
-                  {discussion(data) &&
+                  {discussionLabel &&
                     <span className="inline-block">
-                      &nbsp;{discussion(data)}
+                      &nbsp;{discussionLabel}
                     </span>
                   }
                 </span>

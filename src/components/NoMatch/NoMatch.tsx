@@ -7,5 +7,5 @@ interface INoMatchProps {
 }
 
 export const NoMatch = ({ location }: INoMatchProps) => (
-  <h1 className="font-bold dark:text-white text-2xl">Nothing was found for "{location.pathname}".</h1>
+  <h1 className="font-bold text-gray-700 dark:text-white text-2xl">Nothing was found for "{location.pathname}".</h1>
 );
